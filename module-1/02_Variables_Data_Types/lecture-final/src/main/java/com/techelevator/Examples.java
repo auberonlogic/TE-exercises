@@ -106,6 +106,7 @@ public class Examples {
 		System.out.println("Hello!\n\nGoodbye!");  // The escape character for newline is \n
 		
 		System.out.println("Hello\tGoodbye"); // The escape character for tab is \t
+
 	}
 
 }
