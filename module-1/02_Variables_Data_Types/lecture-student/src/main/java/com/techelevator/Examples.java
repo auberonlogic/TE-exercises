@@ -3,9 +3,20 @@ package com.techelevator;
 public class Examples {
 
 	public static void main(String[] args) {
+
+		// single line comment (ignored by compiler)
+
+		/*
+		multi
+		line
+		comment
+		(ignored by compiler)
+		 */
 		
 		// Variable declaration
-		int x;
+		// Datatype nameOfTheVariable;
+		// Stack: memory that holds your variable
+		int x; // 32 bits, called "x"
 		
 		// Assignment statement
 		x = 3;
@@ -20,22 +31,22 @@ public class Examples {
 		char theFirstLetter = 'a';
 		
 		// use floating point types like double to represent decimal values
-		double averageNumberNumberOfChildren = 2.5;
+		double averageNumberOfChildren = 2.5;
 		
 		// three different types of assignment statements
 		// 1) assigning a literal
-		x = 2;
+		x = 2; // store the value 2 inside variable x
 		// 2) assigning from another variable
-		y = x;
+		y = x; // store the value of x inside variable y
 		// 3) assigning the result of an expression
-		y = x + 3;
+		y = x + 3; // store value of x plus 3 inside variable y
 		
 		// ******************
 		// LITERALS
 		// ******************
 		int myInt = 123;
 		byte myByte = 3;
-		//myByte = myInt;  // causes a compiler error because the int variable is capable of holding values that won't fit in a byte
+		// myByte = myInt;  // causes a compiler error because the int variable is capable of holding values that won't fit in a byte
 		myInt = myByte;
 		
 		// Hexadecimal literals are preceded by 0x
@@ -49,6 +60,8 @@ public class Examples {
 		System.out.println("first name: "+firstName);
 		System.out.println("last name: "+lastName);
 		System.out.println("full name: "+fullName);
+
+		System.exit(0);
 		
 		int numberOfNETStudents = 8;
 		int numberOfJavaStudents = 14;
