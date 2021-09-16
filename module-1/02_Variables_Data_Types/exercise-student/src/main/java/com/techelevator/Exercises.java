@@ -316,7 +316,7 @@ public class Exercises {
         */
 		int numBoats = 5;
 		int peoplePerBoat = 3;
-		int totatPeople = numBoats * peoplePerBoat;
+		int totalPeople = numBoats * peoplePerBoat;
 
 
         /* Exercise 35
@@ -479,7 +479,7 @@ public class Exercises {
 	    /* Exercise 51
 	    51. Bill and Jill are house painters. Bill can paint a 12 x 14 room in 2.15 hours, while Jill averages
 	    1.90 hours. cHow long will it take the two painters working together to paint 5 12 x 14 rooms?
-	    Hint: Calculate the hourly rate for each painter, ombine them, and then divide the total walls in feet by the combined hourly rate of the painters.
+	    Hint: Calculate the hourly rate for each painter, combine them, and then divide the total walls in feet by the combined hourly rate of the painters.
 	    */
 		double billPaintSpeed = (12 * 14) / 2.15;
 		double jillPaintSpeed = (12 * 14) / 1.90;

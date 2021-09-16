@@ -10,6 +10,9 @@ public class Exercises {
 	 sleepIn(false, true) → true
 	 */
 	public boolean sleepIn(boolean weekday, boolean vacation) {
+		if (!weekday || vacation) {
+			return true;
+		}
 		return false;
 	}
 
@@ -22,6 +25,9 @@ public class Exercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
+		if (aSmile == bSmile) {
+			return true;
+		}
 		return false;
 	}
 
@@ -32,7 +38,19 @@ public class Exercises {
 	 sumDouble(2, 2) → 8
 	 */
 	public int sumDouble(int a, int b) {
-		return 0;
+		// could create int sumAB and insert it for all instances of a + b
+//		if (a == b) {
+//			return (a + b) * 2;
+//		}
+//		return a + b; 46 characters
+		int sumAB = a + b;
+		if (a == b) {
+			return sumAB * 2;
+		}
+		return sumAB; // 62 characters
+		// Sort of dumb to literally type more code in an effort to save time or be concise or whatever...
+		// But it could be useful if what's stored in the "time saving" variable is complex or used a lot.
+		// This is similar to exercise 11 hasTeen. How much thought and code is it worth to save myself work later?
 	}
 
 	/*
@@ -45,7 +63,18 @@ public class Exercises {
 	 diff21(-10) → 31
 	 */
 	public int diff21(int n) {
-		return 0;
+		if (n > 21) {
+			return -(21 - n) * 2; 	// Lots of ways to distribute this negative
+									// -1 * (21 - n) * 2;
+									// (21 - n) * -2;
+									// (-21 + n) * 2;
+									// Any number of parenthetical arrangements
+									// Do parentheses in Java behave the same way as they do in math?
+									// Whether or no, IntelliJ doesn't seem to care if I use too many
+									// parentheses, so long as they're closed. But too many looks cluttered.
+									// What's the goal here? What's more readable? What makes the most sense?
+		}
+		return 21 - n;
 	}
 
 	/*
@@ -57,6 +86,9 @@ public class Exercises {
 	 parrotTrouble(false, 6) → false
 	 */
 	public boolean parrotTrouble(boolean talking, int hour) {
+		if (talking && ((hour < 7) || (hour > 20))) {
+			return true;
+		}
 		return false;
 	}
 
@@ -67,6 +99,9 @@ public class Exercises {
 	 makes10(1, 9) → true
 	 */
 	public boolean makes10(int a, int b) {
+		if ((a == 10 || b == 10) || (a + b == 10)) {
+			return true;
+		}
 		return false;
 	}
 
@@ -78,8 +113,17 @@ public class Exercises {
 	 posNeg(-4, -5, true) → true
 	 */
 	public boolean posNeg(int a, int b, boolean negative) {
-		return false;
+		if ((((a < 0) ^ (b < 0)) && !negative) || (((a < 0) && (b < 0)) && negative)) {
+			return true;
+		}
+//		else if (((a < 0) && (b < 0)) && negative) {
+//			return true;
+//		}
+		else {
+			return false;
+		}
 	}
+	// What is better? OR comparators (||) in the if condition or a sequence of if elses?
 
 	/*
 	 8. Return true if the given non-negative number is a multiple of 3 or a multiple of 5.
@@ -89,6 +133,9 @@ public class Exercises {
 	 or35(8) → false
 	 */
 	public boolean or35(int n) {
+		if (n % 3 == 0 || n % 5 == 0) {
+			return true;
+		}
 		return false;
 	}
 
@@ -99,6 +146,9 @@ public class Exercises {
 	 icyHot(2, 120) → false
 	 */
 	public boolean icyHot(int temp1, int temp2) {
+		if ((temp1 < 0 && temp2 > 100) ^ (temp1 > 100 && temp2 < 0)) {
+			return true;
+		}
 		return false;
 	}
 
@@ -109,8 +159,13 @@ public class Exercises {
 	 in1020(8, 99) → false
 	 */
 	public boolean in1020(int a, int b) {
+		if ((a >= 10 && a <= 20) || (b >= 10 && b <= 20)) {
+			return true;
+		}
 		return false;
 	}
+	// Is there some way to determine a range in Java besides comparing the variable
+	// singly to each the lower bound and the upper bound, and requiring both to be true?
 
 	/*
 	 11. We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values,
@@ -120,7 +175,23 @@ public class Exercises {
 	 hasTeen(20, 10, 13) → true
 	 */
 	public boolean hasTeen(int a, int b, int c) {
+		// This right here is what I mean in the comment below exercise 10.
+		// If I can determine a range and store it in a variable (by some method),
+		// then I can input a, b, and c into that function in the condition of the if statement below.
+		if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19)) {
+			return true;
+		}
 		return false;
+		// Duplication of effort. How do I create a variable x to store the value of teen (range?),
+		// then just compare a, b, and c each to x in the if statement.
+		//
+		// public boolean hasTeen(int a, int b, int c) {
+		// 		some datatype x = some code to store range of teen in x
+		// 		if (a == x || b == x || c == x) {
+		//			return true;
+		// 		}
+		//		return false;
+		// }
 	}
 
 	/*
@@ -131,6 +202,9 @@ public class Exercises {
 	 loneTeen(13, 13) → false
 	 */
 	public boolean loneTeen(int a, int b) {
+		if ((a >= 13 && a <= 19) ^ (b >= 13 && b <= 19)) {
+			return true;
+		}
 		return false;
 	}
 
@@ -141,7 +215,13 @@ public class Exercises {
 	 intMax(3, 2, 1) → 3
 	 */
 	public int intMax(int a, int b, int c) {
-		return 0;
+		if (a >= b && a >= c) {
+			return a;
+		} else if (b >= a && b >= c) {
+			return b;
+		} else {
+			return c;
+		}
 	}
 
 	/*
@@ -152,8 +232,12 @@ public class Exercises {
 	 in3050(40, 50) → true
 	 */
 	public boolean in3050(int a, int b) {
+		if (((a >= 30 && a <= 40) && (b >= 30 && b <= 40)) || ((a >= 40 && a <= 50) && (b >= 40 && b <= 50))) {
+			return true;
+		}
 		return false;
 	}
+	// the if condition looks like a mess. Better to use if else?
 
 	/*
 	 15. Given 2 int values, return the larger value that is in the range 10..20 inclusive,
@@ -163,8 +247,20 @@ public class Exercises {
 	 max1020(11, 9) → 11
 	 */
 	public int max1020(int a, int b) {
-		return 0;
-	}
+		if (a > b && (a >= 10 && a <= 20)) {
+			return a;
+		} else if (b > a && (b >= 10 && b <= 20)){
+			return b;
+		} else if (a < b && (a >= 10 && a <= 20)) { // I could include this condition in the first if condition
+			return a;								// by use of ||
+		} else if (b < a && (b >= 10 && b <= 20)) { // Likewise I could combine this with the first if else
+			return b;								// using ||
+		} else {									// Since || and if else are equivalent,
+			return 0;								// I can remove 2 of the 3 if else statements
+		}											// If the range of acceptable return values is limited
+	}												// the number of if, if else, and else statements
+													// should equal the number of unique return values.
+													// Or am I missing something?
 
 	/*
 	 16. When squirrels get together for a party, they like to have cigars. A squirrel party is successful
@@ -176,7 +272,13 @@ public class Exercises {
 	 cigarParty(70, true) → true
 	 */
 	public boolean cigarParty(int cigars, boolean isWeekend) {
-		return false;
+		if (cigars >= 40 && cigars <= 60) {
+			return true;
+		} else if (isWeekend && cigars >= 40) { // same return value as the if statement
+			return true;						// combine them?
+		} else {
+			return false;
+		}
 	}
 
 	/*
@@ -191,7 +293,13 @@ public class Exercises {
 	 dateFashion(5, 5) → 1
 	 */
 	public int dateFashion(int you, int date) {
-		return 0;
+		if ((you >= 8 || date >= 8) && (you > 2 && date > 2)) {
+			return 2;
+		} else if (you > 2 && date > 2) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	/*
@@ -203,7 +311,13 @@ public class Exercises {
 	 squirrelPlay(95, true) → true
 	 */
 	public boolean squirrelPlay(int temp, boolean isSummer) {
-		return false;
+		if (temp >= 60 && temp <= 90) {
+			return true;
+		} else if (isSummer && temp >= 60 && temp <= 100) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
     /*
@@ -227,7 +341,19 @@ public class Exercises {
      yourCakeAndEatItToo(11.00, false) → "special"
      */
     public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
-        return "";
+    	if (isBirthday && mealAmount <= 5) {
+			return "standard";
+		} else if (isBirthday && mealAmount <= 10) {
+    		return "special";
+		} else if (isBirthday && mealAmount > 10) {
+    		return "ginormous";
+		} else if (mealAmount <= 10) { 	// if i combined these with the statements with equivalent
+    		return "standard";			// return values, would I have to add "!isBirthday &&" to
+		} else if (mealAmount <= 15) {	// the existing condition?
+    		return "special";
+		} else {
+    		return "ginormous";
+		}
     }
 
 	/*
@@ -238,7 +364,11 @@ public class Exercises {
 	 sortaSum(10, 11) → 21
 	 */
 	public int sortaSum(int a, int b) {
-		return 0;
+		if (((a + b) < 10) || ((a + b) > 19)) {
+			return a + b;
+		} else {
+			return 20;
+		}
 	}
 
 	/*
@@ -251,7 +381,13 @@ public class Exercises {
 	 alarmClock(0, false) → "10:00"
 	 */
 	public String alarmClock(int day, boolean vacation) {
-		return "";
+		if (((day != 0 && day != 6) && vacation) || ((day == 0 || day == 6) && !vacation)) {
+			return "10:00";
+		} else if (day != 0 && day != 6) {
+			return "7:00";
+		} else {
+			return "off";
+		}
 	}
 
 	/*
@@ -262,7 +398,11 @@ public class Exercises {
 	 in1To10(11, true) → true
 	 */
 	public boolean in1To10(int n, boolean outsideMode) {
-		return false;
+		if ((n >= 1 && n <= 10) && !outsideMode) {
+			return true;
+		} else if (outsideMode && (n <= 1 || n >=10)) {
+			return true;
+		} else return false;
 	}
 
 	/*
@@ -274,7 +414,9 @@ public class Exercises {
 	 specialEleven(24) → false
 	 */
 	public boolean specialEleven(int n) {
-		return false;
+		if ((n % 11 == 0) || (n % 11 == 1)) {
+			return true;
+		} else return false;
 	}
 
 	/*
@@ -285,7 +427,9 @@ public class Exercises {
 	 more20(22) → true
 	 */
 	public boolean more20(int n) {
-		return false;
+		if ((n % 20 == 1) || (n % 20 == 2)) {
+			return true;
+		} else return false;
 	}
 
 	/*
@@ -296,7 +440,9 @@ public class Exercises {
 	 old35(15) → false
 	 */
 	public boolean old35(int n) {
-		return false;
+		if ((n % 3 == 0) ^ (n % 5 == 0)) {
+			return true;
+		} else return false;
 	}
 
 	/*
@@ -308,7 +454,9 @@ public class Exercises {
 	 less20(20) → false
 	 */
 	public boolean less20(int n) {
-		return false;
+		if ((n % 20 == 18) || (n % 20 == 19)) {
+			return true;
+		} else return false;
 	}
 
 	/*
@@ -319,7 +467,9 @@ public class Exercises {
 	 nearTen(19) → true
 	 */
 	public boolean nearTen(int num) {
-		return false;
+		if ((num % 10 == 0) || (num % 10 == 1) || (num % 10 == 2) || (num % 10 == 8) || (num % 10 == 9)) {
+			return true;
+		} else return false;
 	}
 
 	/*
@@ -330,7 +480,9 @@ public class Exercises {
 	 teenSum(13, 2) → 19
 	 */
 	public int teenSum(int a, int b) {
-		return 0;
+		if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19)) {
+			return 19;
+		} else return a + b;
 	}
 
 	/*
@@ -341,7 +493,23 @@ public class Exercises {
 	 answerCell(true, false, false) → false
 	 */
 	public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
-		return false;
+		// This is what the IDE suggested after the second version
+		// Pay attention when your if/if else/else statements share a lot of conditions.
+		// It's a clue that they can be condensed. Something to do with the distributive property?
+		return !isAsleep && (isMom || !isMorning);
+
+		// second version...
+//		if (!isAsleep && (isMom || !isMorning)) {
+//			return true;
+//		}
+//		return false;
+
+		// first version...
+//		if (isMorning && isMom && !isAsleep) {
+//			return true;
+//		} else if (!isMorning && !isAsleep) {
+//			return true;
+//		} else return false;
 	}
 
 	/*
@@ -354,7 +522,11 @@ public class Exercises {
 	 teaParty(20, 6) → 2
 	 */
 	public int teaParty(int tea, int candy) {
-		return 0;
+		if (tea < 5 || candy < 5) {
+			return 0;
+		} else if ((tea >= candy * 2) || (candy >= tea * 2)) {
+			return 2;
+		} else return 1;
 	}
 
 	/*
@@ -364,7 +536,15 @@ public class Exercises {
 	 twoAsOne(3, 2, 2) → false
 	 */
 	public boolean twoAsOne(int a, int b, int c) {
-		return false;
+		// Again, the IDE suggests shortening this just a return statement...
+		return (a + b == c) || (a + c == b) || (b + c == a);
+		// I don't quite understand why this is equivalent to the code commented out immediately below.
+		// Ooooooh because they evaluate as booleans. If any of them evaluate to true, that's what is
+		// being returned from the method. No need to specify an else condition at all. Because it's implied?
+
+//		if ((a + b == c) || (a + c == b) || (b + c == a)) {
+//			return true;
+//		} else return false;
 	}
 
 	/*
@@ -375,8 +555,19 @@ public class Exercises {
 	 inOrder(1, 1, 2, true) → true
 	 */
 	public boolean inOrder(int a, int b, int c, boolean bOk) {
-		return false;
+		if ((b > a) && (c > b) && !bOk) {
+			return true;
+		} else if (bOk && (c > b)) {
+			return true;
+		} else return false;
 	}
+	// Is there ever a reason to compare x || !x?
+	// if x is true, !x is by definition false. And vice versa.
+	// || is saying "I need one or the other or both."
+	// If !x is true, x will never be true.
+	// If x is true, !x will never be true.
+	// So comparing a variable and its negative with || will only ever give you one of them.
+	// I'm not articulating this well. Gotta think more about it.
 
 	/*
 	 33. Given three ints, a b c, return true if they are in strict increasing order, such as 2 5 11,
@@ -387,7 +578,17 @@ public class Exercises {
 	 inOrderEqual(5, 5, 7, true) → true
 	 */
 	public boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
-		return false;
+		if (!equalOk && a < b && b < c) {
+			return true;
+
+			// Check this out. IntelliJ recommended condensing the if else commented out below
+			// with this....
+		} else return a <= b && b <= c;
+			// Not sure I get why this works...
+
+//			else if (a <= b && b <= c) {
+//			return true;
+//		} else return false;
 	}
 
 	/*
@@ -398,7 +599,15 @@ public class Exercises {
 	 loneSum(3, 3, 3) → 0
 	 */
 	public int loneSum(int a, int b, int c) {
-		return 0;
+		if (a == b && a != c) {
+			return c;
+		} else if (a == c && b != c) {
+			return b;
+		} else if (b == c && a != c) {
+			return a;
+		} if (a == b && a == c) {
+			return 0;
+		} else return a + b + c;
 	}
 
 	/*
@@ -412,7 +621,15 @@ public class Exercises {
 	 luckySum(13, 13, 3) → 0
 	 */
 	public int luckySum(int a, int b, int c) {
-		return 0;
+		if (a == 13 && b == 13) {
+			return 0;
+		} else if (a == 13) {
+			return c;
+		} else if (b == 13) {
+			return a;
+		} else if (c == 13) {
+			return a + b;
+		} else return a + b + c;
 	}
 
 }
