@@ -10,10 +10,7 @@ public class Exercises {
 	 sleepIn(false, true) → true
 	 */
 	public boolean sleepIn(boolean weekday, boolean vacation) {
-		if (!weekday || vacation) {
-			return true;
-		}
-		return false;
+		return !weekday || vacation;
 	}
 
 	/*
@@ -25,10 +22,7 @@ public class Exercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		if (aSmile == bSmile) {
-			return true;
-		}
-		return false;
+		return aSmile == bSmile;
 	}
 
 	/*
@@ -86,10 +80,7 @@ public class Exercises {
 	 parrotTrouble(false, 6) → false
 	 */
 	public boolean parrotTrouble(boolean talking, int hour) {
-		if (talking && ((hour < 7) || (hour > 20))) {
-			return true;
-		}
-		return false;
+		return talking && ((hour < 7) || (hour > 20));
 	}
 
 	/*
@@ -99,10 +90,7 @@ public class Exercises {
 	 makes10(1, 9) → true
 	 */
 	public boolean makes10(int a, int b) {
-		if ((a == 10 || b == 10) || (a + b == 10)) {
-			return true;
-		}
-		return false;
+		return (a == 10 || b == 10) || (a + b == 10);
 	}
 
 	/*
@@ -113,15 +101,10 @@ public class Exercises {
 	 posNeg(-4, -5, true) → true
 	 */
 	public boolean posNeg(int a, int b, boolean negative) {
-		if ((((a < 0) ^ (b < 0)) && !negative) || (((a < 0) && (b < 0)) && negative)) {
-			return true;
-		}
-//		else if (((a < 0) && (b < 0)) && negative) {
-//			return true;
-//		}
-		else {
-			return false;
-		}
+		//		else if (((a < 0) && (b < 0)) && negative) {
+		//			return true;
+		//		}
+		return (((a < 0) ^ (b < 0)) && !negative) || (((a < 0) && (b < 0)) && negative);
 	}
 	// What is better? OR comparators (||) in the if condition or a sequence of if elses?
 
@@ -133,10 +116,7 @@ public class Exercises {
 	 or35(8) → false
 	 */
 	public boolean or35(int n) {
-		if (n % 3 == 0 || n % 5 == 0) {
-			return true;
-		}
-		return false;
+		return n % 3 == 0 || n % 5 == 0;
 	}
 
 	/*
@@ -146,10 +126,7 @@ public class Exercises {
 	 icyHot(2, 120) → false
 	 */
 	public boolean icyHot(int temp1, int temp2) {
-		if ((temp1 < 0 && temp2 > 100) ^ (temp1 > 100 && temp2 < 0)) {
-			return true;
-		}
-		return false;
+		return (temp1 < 0 && temp2 > 100) ^ (temp1 > 100 && temp2 < 0);
 	}
 
 	/*
@@ -159,10 +136,7 @@ public class Exercises {
 	 in1020(8, 99) → false
 	 */
 	public boolean in1020(int a, int b) {
-		if ((a >= 10 && a <= 20) || (b >= 10 && b <= 20)) {
-			return true;
-		}
-		return false;
+		return (a >= 10 && a <= 20) || (b >= 10 && b <= 20);
 	}
 	// Is there some way to determine a range in Java besides comparing the variable
 	// singly to each the lower bound and the upper bound, and requiring both to be true?
@@ -178,10 +152,7 @@ public class Exercises {
 		// This right here is what I mean in the comment below exercise 10.
 		// If I can determine a range and store it in a variable (by some method),
 		// then I can input a, b, and c into that function in the condition of the if statement below.
-		if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19)) {
-			return true;
-		}
-		return false;
+		return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
 		// Duplication of effort. How do I create a variable x to store the value of teen (range?),
 		// then just compare a, b, and c each to x in the if statement.
 		//
@@ -202,10 +173,7 @@ public class Exercises {
 	 loneTeen(13, 13) → false
 	 */
 	public boolean loneTeen(int a, int b) {
-		if ((a >= 13 && a <= 19) ^ (b >= 13 && b <= 19)) {
-			return true;
-		}
-		return false;
+		return (a >= 13 && a <= 19) ^ (b >= 13 && b <= 19);
 	}
 
 	/*
@@ -232,10 +200,7 @@ public class Exercises {
 	 in3050(40, 50) → true
 	 */
 	public boolean in3050(int a, int b) {
-		if (((a >= 30 && a <= 40) && (b >= 30 && b <= 40)) || ((a >= 40 && a <= 50) && (b >= 40 && b <= 50))) {
-			return true;
-		}
-		return false;
+		return ((a >= 30 && a <= 40) && (b >= 30 && b <= 40)) || ((a >= 40 && a <= 50) && (b >= 40 && b <= 50));
 	}
 	// the if condition looks like a mess. Better to use if else?
 
@@ -414,9 +379,7 @@ public class Exercises {
 	 specialEleven(24) → false
 	 */
 	public boolean specialEleven(int n) {
-		if ((n % 11 == 0) || (n % 11 == 1)) {
-			return true;
-		} else return false;
+		return (n % 11 == 0) || (n % 11 == 1);
 	}
 
 	/*
@@ -427,9 +390,7 @@ public class Exercises {
 	 more20(22) → true
 	 */
 	public boolean more20(int n) {
-		if ((n % 20 == 1) || (n % 20 == 2)) {
-			return true;
-		} else return false;
+		return (n % 20 == 1) || (n % 20 == 2);
 	}
 
 	/*
@@ -440,9 +401,7 @@ public class Exercises {
 	 old35(15) → false
 	 */
 	public boolean old35(int n) {
-		if ((n % 3 == 0) ^ (n % 5 == 0)) {
-			return true;
-		} else return false;
+		return (n % 3 == 0) ^ (n % 5 == 0);
 	}
 
 	/*
@@ -454,9 +413,7 @@ public class Exercises {
 	 less20(20) → false
 	 */
 	public boolean less20(int n) {
-		if ((n % 20 == 18) || (n % 20 == 19)) {
-			return true;
-		} else return false;
+		return (n % 20 == 18) || (n % 20 == 19);
 	}
 
 	/*
@@ -467,9 +424,7 @@ public class Exercises {
 	 nearTen(19) → true
 	 */
 	public boolean nearTen(int num) {
-		if ((num % 10 == 0) || (num % 10 == 1) || (num % 10 == 2) || (num % 10 == 8) || (num % 10 == 9)) {
-			return true;
-		} else return false;
+		return (num % 10 == 0) || (num % 10 == 1) || (num % 10 == 2) || (num % 10 == 8) || (num % 10 == 9);
 	}
 
 	/*
