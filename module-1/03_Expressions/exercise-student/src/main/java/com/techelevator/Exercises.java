@@ -554,15 +554,33 @@ public class Exercises {
 	 loneSum(3, 3, 3) → 0
 	 */
 	public int loneSum(int a, int b, int c) {
+
+		// Notes from class...
+//		// case 1: 0 things are the same -- add all three
+//		if (a != b && a != c && b != c) {
+//			return a + b + c;
+//		}
+//
+//		// case 2: 2 things are the same -- add the distinct one
+//		if (a == b && a != c) {
+//			return c;
+//		} else if (a == c && a != b) {
+//			return b;
+//		} else if (b == c && b != a) {
+//			return a;
+//		}
+//		return 0;
+
 		if (a == b && a != c) {
 			return c;
 		} else if (a == c && b != c) {
 			return b;
 		} else if (b == c && a != c) {
 			return a;
-		} if (a == b) {
+		} else if (a == b) {
 			return 0;
-		} else return a + b + c;
+		}
+		return a + b + c;
 	}
 
 	/*
