@@ -71,7 +71,7 @@ public class Exercises {
 									// Any number of parenthetical arrangements
 									// Do parentheses in Java behave the same way as they do in math?
 									// Whether or no, IntelliJ doesn't seem to care if I use too many
-									// parentheses, so long as they're closed.
+									// parentheses, so long as they're closed. But too many looks cluttered.
 									// What's the goal here? What's more readable? What makes the most sense?
 		}
 		return 21 - n;
@@ -116,9 +116,10 @@ public class Exercises {
 		if ((((a < 0) ^ (b < 0)) && !negative) || (((a < 0) && (b < 0)) && negative)) {
 			return true;
 		}
-		/** else if (((a < 0) && (b < 0)) && negative) {
-			return true;
-		} */ else {
+//		else if (((a < 0) && (b < 0)) && negative) {
+//			return true;
+//		}
+		else {
 			return false;
 		}
 	}
@@ -185,7 +186,7 @@ public class Exercises {
 		// then just compare a, b, and c each to x in the if statement.
 		//
 		// public boolean hasTeen(int a, int b, int c) {
-		// 		datatype x = some code to store range of teen in x
+		// 		some datatype x = some code to store range of teen in x
 		// 		if (a == x || b == x || c == x) {
 		//			return true;
 		// 		}
