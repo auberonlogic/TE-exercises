@@ -560,7 +560,7 @@ public class Exercises {
 			return b;
 		} else if (b == c && a != c) {
 			return a;
-		} if (a == b && a == c) {
+		} if (a == b) {
 			return 0;
 		} else return a + b + c;
 	}
