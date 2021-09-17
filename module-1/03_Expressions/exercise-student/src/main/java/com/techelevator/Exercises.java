@@ -58,7 +58,7 @@ public class Exercises {
 	 */
 	public int diff21(int n) {
 		if (n > 21) {
-			return -(21 - n) * 2; 	// Lots of ways to distribute this negative
+			return (n - 21) * 2; 	// Lots of ways to distribute this negative
 									// -1 * (21 - n) * 2;
 									// (21 - n) * -2;
 									// (-21 + n) * 2;
@@ -187,9 +187,8 @@ public class Exercises {
 			return a;
 		} else if (b >= a && b >= c) {
 			return b;
-		} else {
-			return c;
 		}
+		return c;
 	}
 
 	/*
