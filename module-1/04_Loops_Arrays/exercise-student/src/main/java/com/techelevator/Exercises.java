@@ -179,11 +179,9 @@ public class Exercises {
 	 has22([2, 1, 2]) → false
 	 */
 	public boolean has22(int[] nums) {
-		for (int i = 0; i < nums.length; i++) {
+		for (int i = 0; i < nums.length - 1; i++) {
 			if ((nums[i] == 2 && nums[i + 1] == 2)) {
 				return true;
-			} else if (nums[i] == 2) {
-				return false;
 			}
 		} return false;
 	}
@@ -218,5 +216,4 @@ public class Exercises {
 		}
 		return (twos == 8);
 	}
-
 }
