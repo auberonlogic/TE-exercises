@@ -18,19 +18,21 @@ public class Fibonacci {
 		int[] arr = new int[inputInt];
 
 		// Fibonacci loop
-		int validFib = 0;
-		for (int i = 0; i <= arr.length; i++) {
+		int fibOne = 0;
+		int fibTwo = 1;
+
+//		for (int i = 0; i <= arr.length; i++) {
 //			System.out.println(i);
-			if (i == 1) {
-				System.out.println(validFib + " " + i);
-				validFib += i;
-
-			} else if (i >=1 && i == validFib + arr[i - 1]) {
-				System.out.println(i);
-				System.out.println(i);
-			}
-
-		}
+//			if (i == 1) {
+//				System.out.println(validFib + " " + i);
+//				validFib += i;
+//
+//			} else if (i >=1 && i == validFib + arr[i - 1]) {
+//				System.out.println(i);
+//				System.out.println(i);
+//			}
+//
+//		}
 
 
 
