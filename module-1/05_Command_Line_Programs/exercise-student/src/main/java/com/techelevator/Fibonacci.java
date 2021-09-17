@@ -21,21 +21,17 @@ public class Fibonacci {
 		int fibOne = 0;
 		int fibTwo = 1;
 
-//		for (int i = 0; i <= arr.length; i++) {
-//			System.out.println(i);
-//			if (i == 1) {
-//				System.out.println(validFib + " " + i);
-//				validFib += i;
-//
-//			} else if (i >=1 && i == validFib + arr[i - 1]) {
-//				System.out.println(i);
-//				System.out.println(i);
-//			}
-//
-//		}
+		System.out.print(fibOne + " ");
+		System.out.print(fibTwo + " "); // this messes up if user chooses 0
 
-
-
+		for (int i = 1; i <= inputInt; i++) {
+			if (i == fibOne + fibTwo && fibTwo > fibOne) {
+				System.out.print(i + " ");
+				fibOne = i;
+			} else if (i == fibOne + fibTwo && fibOne >= fibTwo) {
+				System.out.print(i + " ");
+				fibTwo = i;
+			}
+		}
 	}
-
 }
