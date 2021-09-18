@@ -35,7 +35,7 @@ public class Fibonacci {
 			// i will then increment to 1. The first if condition will return false and be skipped.
 			// i is checked against the sum of fibOne and fibTwo (currently 1) and be equal. If fibTwo is larger
 			// than fibOne, i will be printed and then assigned to fibOne.
-			// 
+			//
 			for (int i = 0; i <= inputInt; i++) {
 				if (i == fibOne) {
 					System.out.print(fibOne + " " + fibTwo + " ");
