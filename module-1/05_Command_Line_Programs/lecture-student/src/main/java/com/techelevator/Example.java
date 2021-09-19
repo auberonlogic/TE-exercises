@@ -6,17 +6,22 @@ public class Example {
 
     public static void main(String[] args) {
 
-        Scanner keyboard = new Scanner(System.in);
+//        Scanner keyboard = new Scanner(System.in);
+//
+//        System.out.println("Please enter your name >>> ");
+//        String name = keyboard.nextLine();
+//
+//        if (name.equals("Ryan")) {  // When comparing strings, == will not work
+//                                    // Use name.equals("String")
+//            System.out.println("You are correct!");
+//        } else {
+//            System.out.println("Welcome " + name);
+//        }
 
-        System.out.println("Please enter your name >>> ");
-        String name = keyboard.nextLine();
+        int biggest = 2147483647;
+        System.out.println(biggest);
 
-        if (name.equals("Ryan")) {  // When comparing strings, == will not work
-                                    // Use name.equals("String")
-            System.out.println("You are correct!");
-        } else {
-            System.out.println("Welcome " + name);
-        }
+        // the largest possible value you can store in an int is prime
 
 
     }

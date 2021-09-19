@@ -7,7 +7,7 @@ public class Fibonacci {
 	public static void main(String[] args) {
 
 		// This program prompts the user for a number, then prints the fibonacci
-		// sequence up to and including that number (provided its a fibonacci number).
+		// sequence up to and possibly including that number.
 		//
 		// If the user chooses 18, output will read "0 1 1 2 3 5 8 13"
 
@@ -15,6 +15,9 @@ public class Fibonacci {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("Please enter a number: ");
 		String inputString = keyboard.nextLine();
+		// if user enters value too near the max size of an int (2147483647),
+		// the addition before that will cause the program to loop endlessly
+		// between negative and positive outputs (2038 problem)
 
 		// convert user input from String to int
 		int inputInt = Integer.parseInt(inputString);
@@ -26,43 +29,30 @@ public class Fibonacci {
 			// case when user inputs n > 0
 
 			// fibOne and fibTwo store the values that need to be summed to generate the next fibonacci number
-			int fibOne = 0;
+			int fibOne = 0; // 1
 			int fibTwo = 1;
 
 			// This loop iterates from 0 to whichever number the user inputted.
-			// It first checks if the index is equivalent to fibOne (which is equal to zero when the loop starts).
-			// Because i = 0, the first if statement will print out the first 2 fibonacci numbers.
-			// i will then increment to 1. The first if condition will return false and be skipped.
-			// i is checked against the sum of fibOne and fibTwo (currently 1) and be equal. If fibTwo is larger
-			// than fibOne, i will be printed and then assigned to fibOne.
-			//
+			// The first iteration will print out the first two Fibonacci numbers.
+			// Each iteration after the first will check i against the sum of fibOne and fibTwo.
+			// If i and the sum of fibOne and fibTwo are equivalent, the program will check which
+			// of the stored Fibonacci values is greater and assign i to the variable holding the
+			// smaller value. If fibOne and fibTwo are equal, it doesn't matter which variable the new
+			// value is assigned to, so it's assigned to fibOne.
+			// This will repeat as long as i does not exceed the user input.
 			for (int i = 0; i <= inputInt; i++) {
 				if (i == fibOne) {
 					System.out.print(fibOne + " " + fibTwo + " ");
-				} else if (i == fibOne + fibTwo && fibTwo >= fibOne) {
+				} else if (i == fibOne + fibTwo) {
 					System.out.print(i + " ");
-					fibOne = i;
-				} else if (i == fibOne + fibTwo && fibOne >= fibTwo) {
-					System.out.print(i + " ");
-					fibTwo = i;
+					if (fibTwo >= fibOne) {
+						fibOne = i;
+					} else {
+						fibTwo = i;
+					}
 				}
 			}
 		}
-
-//		int fibOne = 0;
-//		int fibTwo = 1;
-//
-//		System.out.print(fibOne + " ");
-//		System.out.print(fibTwo + " "); // this messes up if user chooses 0
-//
-//		for (int i = 1; i <= inputInt; i++) {
-//			if (i == fibOne + fibTwo && fibTwo > fibOne) {
-//				System.out.print(i + " ");
-//				fibOne = i;
-//			} else if (i == fibOne + fibTwo && fibOne >= fibTwo) {
-//				System.out.print(i + " ");
-//				fibTwo = i;
-//			}
-//		}
 	}
 }
+

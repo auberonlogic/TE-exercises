@@ -8,13 +8,13 @@ public class TryingSomething {
 
         Scanner kb = new Scanner(System.in);
 
-//        System.out.println("Write a program that prints a given array in reverse order");
-//
-//        int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-//
-//        for (int i = array.length - 1; i >= 0; i--) {
-//            System.out.print(array[i] + " ");
-//        }
+        System.out.println("Write a program that prints a given array in reverse order");
+
+        int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            System.out.print(array[i] + " ");
+        }
 //        System.out.println();
 //        System.out.println();
 //
@@ -85,24 +85,27 @@ public class TryingSomething {
 //                System.out.print(x + " = " + product);
 //            }
 //        }
+//
+//
+//        System.out.println("Two numbers are entered through the keyboard. Write a program to find the" +
+//                "\nvalue of one number raised to the power of another. (Do not use Java built-in method)");
+//
+//        System.out.print("Enter a positive number as a base: ");
+//        int num1 = kb.nextInt();
+//
+//        System.out.print("Enter another positive number as an exponent: ");
+//        int num2 = kb.nextInt();
+//        int multiple = num2;
+//
+//        // I'm trying to make it multiply num1 a number of times equal to num2.
+//        // Tired. Look into it in the morning.
+//        for (int e = 1; e <= num2; e++) {
+//            multiple *= num1; // the math is wrong
+//        }
+//        System.out.println(num1 + " raised to the " + num2 + " power = " + multiple);
+//
 
-
-        System.out.println("Two numbers are entered through the keyboard. Write a program to find the" +
-                "\nvalue of one number raised to the power of another. (Do not use Java built-in method)");
-
-        System.out.print("Enter a positive number as a base: ");
-        int num1 = kb.nextInt();
-
-        System.out.print("Enter another positive number as an exponent: ");
-        int num2 = kb.nextInt();
-        int multiple = num2;
-
-        // I'm trying to make it multiply num1 a number of times equal to num2.
-        // Tired. Look into it in the morning.
-        for (int e = 1; e <= num2; e++) {
-            multiple *= num1; // the math is wrong
-        }
-        System.out.println(num1 + " raised to the " + num2 + " power = " + multiple);
+        // Write a program to list primes <= to user input
 
 
 
