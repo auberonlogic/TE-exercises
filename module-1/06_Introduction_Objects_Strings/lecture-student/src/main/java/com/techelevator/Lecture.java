@@ -1,5 +1,9 @@
 package com.techelevator;
 
+<<<<<<< HEAD
+=======
+import java.util.Locale;
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 import java.util.Scanner;
 
 public class Lecture {
@@ -16,6 +20,8 @@ public class Lecture {
 		 * is not the case for most classes */
 
 		/* create an new instance of String using a literal */
+		String name = "Tom";
+		// String name = new String("Tom");
 
 		String name = "Ryan";
 		// String name = new String("Ryan"); is the same as the shortcut above.
@@ -27,6 +33,7 @@ public class Lecture {
 		System.out.println("******************************");
 		System.out.println();
 
+<<<<<<< HEAD
 		String obligatory = "Hello World. You're World awesome World and I love you";
 		char d = obligatory.charAt(10);	// passes index value referenced to the char h
 										// primitive data type. can use ==
@@ -56,17 +63,43 @@ public class Lecture {
 				break;
 			} else {
 				System.out.println("Try Again!");
+=======
+		//                   000000000011111111112222222222233333333334
+		//                   012345678901234567890123456789012345678901
+		String obligatory = "Hello World, You're World awesome World and I love you";
+		char d = obligatory.charAt(10);
+		String dString = obligatory.substring(10, 11);
+
+		char[] charArray = obligatory.toCharArray();
+
+
+		Scanner keyboard = new Scanner(System.in);
+
+		while(true) {
+			System.out.println("Enter (C)elsius or (F)ahrenheit >>> ");
+			String userChoice = keyboard.nextLine();
+			if (userChoice.toLowerCase().trim().startsWith("c")) {
+				break;
+			} else {
+				System.out.println("Try again!");
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 				System.out.println(userChoice + " is not valid input.");
 			}
 		}
 
 		boolean flag = true;
+<<<<<<< HEAD
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++)
+=======
+		for (int i = 0; i < 10 && flag; i++) {
+			for (int j = 0; j < 10; j++) {
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 				if (j == i) {
 					flag = false;
 					break;
 				}
+<<<<<<< HEAD
 		}
 
 
@@ -93,6 +126,30 @@ public class Lecture {
 		String garbage = "                 Hello there Ryan this a long       sentence              ";
 		String slightlyLessGarbage = garbage.trim();
 		// output >>> "Hello there Ryan this a long       sentence"
+=======
+			}
+		}
+
+		System.out.println(i);
+
+		// Immutable!
+		obligatory = obligatory.toUpperCase();
+		obligatory.startsWith("HELLO");
+
+
+		// "Hello World, You're World awesome World and I love you"
+		int firstWorld = obligatory.indexOf("World"); // 6
+		obligatory = obligatory.substring(firstWorld + 1);
+		// "orld, You're World awesome World and I love you"
+		int secondWorld = obligatory.indexOf("World"); // 13
+		int lastWorld = obligatory.lastIndexOf("World");
+
+
+		String garbage = "             Hello There Tom this is a long       sentence          ";
+		String slightlyLessGarbage = garbage.trim();
+		// "Hello There Tom this is a long       sentence"
+
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 
 		/* Other commonly used methods:
 		 *
@@ -119,7 +176,11 @@ public class Lecture {
 		 * hello2 point to the same object in memory. Are they the same object? */
 
 		String hello1 = new String("Hello"); // 0xFACE
+<<<<<<< HEAD
 		String hello2 = new String("Hello");	// 0xFADE
+=======
+		String hello2 = new String("Hello"); // 0xFADE
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 
 		if (hello1 == hello2) {
 			System.out.println("They are equal!");
@@ -140,6 +201,10 @@ public class Lecture {
 			System.out.println(hello1 + " is not equal to " + hello2);
 		}
 
+<<<<<<< HEAD
+=======
+		//                 0123456789
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 		String language = "JavaScript";
 		for (int i = 0; i < language.length(); i++) {
 			String thisLetter = language.substring(i, i+1);
@@ -147,14 +212,24 @@ public class Lecture {
 			System.out.println(thisLetter);
 		}
 
+<<<<<<< HEAD
 		String example; // example is null
 		// example.length(); // Null Pointer Exception (technically called Null Reference Exception.
 							 // Never say "Pointer"
+=======
+		String example;  // example is null
+//		example.length(); // Null Pointer Exception
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 
 		String example2 = "";
 		example2.length(); // 0
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b0b7fdfdabd766284dd4097d5d8dc04f9c510873
 	}
 }
