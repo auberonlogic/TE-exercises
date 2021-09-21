@@ -349,7 +349,15 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		char[] chars = str.toCharArray();
+		char[] everyOtherChar = new char[str.length()/2];
+		for (int i = 0; i < str.length(); i++) {
+			if (i % 2 == 0) {
+				everyOtherChar[i] = str.charAt(i);
+			}
+		}
+		String everyOtherString = new String(everyOtherChar);
+		return everyOtherString;
 	}
 
 	/*

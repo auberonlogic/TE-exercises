@@ -29,7 +29,7 @@ public class Fibonacci {
 			// case when user inputs n > 0
 
 			// fibOne and fibTwo store the values that need to be summed to generate the next fibonacci number
-			int fibOne = 0; // 1
+			int fibOne = 0;
 			int fibTwo = 1;
 
 			// This loop iterates from 0 to whichever number the user inputted.
