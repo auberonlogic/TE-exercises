@@ -459,7 +459,7 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		
+
 		return str.replace("yak", "");
 	}
 

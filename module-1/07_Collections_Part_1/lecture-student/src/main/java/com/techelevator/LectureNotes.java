@@ -25,7 +25,7 @@ public class LectureNotes {
 
         int v = 5; // on stack, no heap, no reference
 
-        Integer x = new Integer(5); // puts a 5 on the heap and a reference to it on the stack
+        Integer x = 5; // puts a 5 on the heap and a reference to it on the stack
 
         // Boxing: int -> Integer		stack to heap
         // Unboxing: Integer -> int		heap to stack
