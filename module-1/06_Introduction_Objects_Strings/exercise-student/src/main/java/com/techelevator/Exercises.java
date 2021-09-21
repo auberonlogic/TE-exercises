@@ -318,7 +318,7 @@ public class Exercises {
 	 Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx".
 	 countXX("abcxx") → 1
 	 countXX("xxx") → 2
-	 countXX("xxxx") →
+	 countXX("xxxx") → 3
 	 */
 	public int countXX(String str) {
 
@@ -333,7 +333,9 @@ public class Exercises {
 	 */
 	public boolean doubleX(String str) {
 		for (int i = 0; i <= str.length() - 2; i++) {
-			if (str.charAt(i) == 'x' && str.charAt(i + 1) == 'x') {
+			if (str.charAt(i) == 'x' && str.charAt(i + 1) != 'x') {
+				return false;
+			} else if (str.charAt(i) == 'x' && str.charAt(i + 1) == 'x') {
 				return true;
 			}
 		}

@@ -18,13 +18,13 @@ public class Lecture {
 		System.out.println("****** MAKING A STRING OBJECT ******");
 		System.out.println("************************************");
 
-		 The String class gets special treatment in the Java language.  One
+/*		 The String class gets special treatment in the Java language.  One
 		 * example of this is that there is a literal representation of a
 		 * String (i.e. characters appearing between two double quotes.  This
-		 * is not the case for most classes
+		 * is not the case for most classes*/
 
 		String name = "Ryan";
-		// String name = new String("Ryan"); is the same as the shortcut above.
+//		String name = new String("Ryan"); is the same as the shortcut above.
 
 
 		System.out.println();
@@ -35,7 +35,7 @@ public class Lecture {
 
 
 		String obligatory = "Hello World. You're World awesome World and I love you";
-		char d = obligatory.charAt(10);    // passes index value referenced to the char h
+		char d = obligatory.charAt(10);    // passes index value referenced to the char d
 		// primitive data type. can use ==
 		String hString = obligatory.substring(10, 11);
 
@@ -113,7 +113,7 @@ public class Lecture {
 			int secondWorld = obligatory.indexOf("World"); // 13
 			int lastWorld = obligatory.lastIndexOf("World");
 
-			 Other commonly used methods:
+/*			 Other commonly used methods:
 			 *
 			 * endsWith		returns a boolean
 			 * startsWith	returns a boolean
@@ -123,7 +123,7 @@ public class Lecture {
 			 * substring
 			 * toLowerCase
 			 * toUpperCase
-			 * trim
+			 * trim*/
 
 
 			System.out.println();
@@ -134,8 +134,8 @@ public class Lecture {
 
 
 
-			 Double equals will compare to see if the two variables, hello1 and
-			 * hello2 point to the same object in memory. Are they the same object?
+/*			 Double equals will compare to see if the two variables, hello1 and
+			 * hello2 point to the same object in memory. Are they the same object?*/
 
 			String hello1 = new String("Hello"); // 0xFACE
 
@@ -152,8 +152,8 @@ public class Lecture {
 				System.out.println("hello1 is the same reference as hello3");
 			}
 
-			 So, to compare the values of two objects, we need to use the equals method.
-			 * Every object type has an equals method
+/*			 So, to compare the values of two objects, we need to use the equals method.
+			 * Every object type has an equals method*/
 			if (hello1.equals(hello2)) {
 				System.out.println("They are equal!");
 			} else {
