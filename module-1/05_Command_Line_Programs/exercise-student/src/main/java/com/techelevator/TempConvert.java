@@ -36,7 +36,7 @@ public class TempConvert {
 			// case when user enters C or c
 			double fDouble = tempInt * 1.8 + 32;
 			int fInt = (int)fDouble;
-			System.out.println(tempInt + unit.toUpperCase() + " is " + fInt	+ "F.");
+			System.out.println(tempInt + "C" + " is " + fInt	+ "F.");
 
 		} else if (unit.equalsIgnoreCase("F")) {
 			// case when user enters F or f
