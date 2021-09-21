@@ -16,7 +16,13 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+
+		List<String> listOfStrings = new ArrayList<String>();
+		for (String string : stringArray) {
+			listOfStrings.add(string);
+		}
+
+		return listOfStrings;
 	}
 
 	/*
@@ -26,8 +32,12 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+
+		String[] listAsStringArray = stringList.toArray(new String[0]);
+
+		return listAsStringArray;
 	}
+
 
 	/*
 	 Given an array of Strings, return an ArrayList containing the same Strings in the same order
