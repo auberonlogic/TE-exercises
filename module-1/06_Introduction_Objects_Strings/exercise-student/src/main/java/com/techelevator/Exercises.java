@@ -321,8 +321,14 @@ public class Exercises {
 	 countXX("xxxx") → 3
 	 */
 	public int countXX(String str) {
-
-		return 0;
+		char[] chars = str.toCharArray();
+		int count = 0;
+		for (int i = 0; i < chars.length - 1; i++) {
+			if (chars[i] == 'x' && chars[i+1] == 'x') {
+				count = count + 1;
+			}
+		}
+		return count;
 	}
 
 	/*
@@ -349,7 +355,15 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		String output = "";
+		char[] chars = str.toCharArray();
+
+		for (int i = 0; i < chars.length; i++) {
+			if (i % 2 == 0) {
+				output = output + chars[i];
+			}
+		}
+		return output;
 	}
 
 	/*
@@ -359,7 +373,11 @@ public class Exercises {
 	 stringSplosion("ab") → "aab"
 	 */
 	public String stringSplosion(String str) {
-		return null;
+		String output = "";
+		for (int i = 0; i < str.length(); i++) {
+			output = str.substring(0, str.length() - i) + output;
+		}
+		return output;
 	}
 
 	/*
@@ -370,7 +388,13 @@ public class Exercises {
 	 last2("axxxaaxx") → 2
 	 */
 	public int last2(String str) {
-		return 0;
+		int count = 0;
+		for (int i = 0; i < str.length() - 2; i++) {
+			if (str.substring(i, i + 2).equals(str.substring(str.length()-2))) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/*
@@ -381,7 +405,16 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+
+		String output = "";
+		for (int i = 0; i < str.length(); i++) {
+			if (i == 0 || i == str.length() - 1 && str.charAt(i) == 'x') {
+				output = output + str.charAt(i);
+			} else if (str.charAt(i) != 'x') {
+				output = output + str.charAt(i);
+			}
+		}
+		return output;
 	}
 
 	/*
@@ -391,7 +424,31 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+//		String output = "";
+
+		//      012345678	... 01458
+		// str: kitten		... kien
+		// str: chocolate	... Chole
+//		for (int i = 0; i < str.length(); i = i+4) {
+//			output = output + str.substring(i, i + 1);
+//			if (i != str.length() - 1) {
+//				output = output + str.substring(i+1, i+2);
+//			}
+//		}
+
+		//      012345678	... 01458
+		// str: kitten		... kien
+		// str: chocolate	... Chole
+		String output = "";
+		char[] chars = str.toCharArray();
+
+		for (int i = 0; i < chars.length; i+=4) {
+			output = output + chars[i];
+			if (i != chars.length - 1) {
+				output = output + chars[i+1];
+			}
+		}
+		return output;
 	}
 
 	/*
@@ -402,7 +459,8 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		return null;
+
+		return str.replace("yak", "");
 	}
 
 }
