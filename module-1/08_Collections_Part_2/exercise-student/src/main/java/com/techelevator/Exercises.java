@@ -134,13 +134,13 @@ public class Exercises {
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
 
 		if (peterPaul.get("Peter") >= 5000 && peterPaul.get("Paul") >= 10000) {
-			int petersWorth = peterPaul.get("Peter")/4;
+			int petersContribution = peterPaul.get("Peter")/4;
 			peterPaul.put("Peter", peterPaul.get("Peter") - peterPaul.get("Peter")/4);
 
-			int paulsWorth = peterPaul.get("Paul")/4;
+			int paulsContribution = peterPaul.get("Paul")/4;
 			peterPaul.put("Paul", peterPaul.get("Paul") - peterPaul.get("Paul")/4);
 
-			peterPaul.put("PeterPaulPartnership", petersWorth + paulsWorth);
+			peterPaul.put("PeterPaulPartnership", petersContribution + paulsContribution);
 			return peterPaul;
 		}
 		return peterPaul;
