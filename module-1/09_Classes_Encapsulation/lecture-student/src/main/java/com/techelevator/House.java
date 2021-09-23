@@ -8,12 +8,10 @@ public class House {
     private String address;
     private int length;
     private int width;
-//    private int sqFootage; dependant variable. don't need it. leads to errors
     private boolean occupied;
 
 
-    // Constructor (can generate)
-
+    // Constructor
     public House(int bedrooms, double bathrooms, String address, int length, int width, boolean occupied) {
         this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
@@ -23,20 +21,15 @@ public class House {
         this.occupied = occupied;
     }
 
-
-    public House(int bed, double bath, String beyond) {
-        this.bedrooms = bed;
-        this.bathrooms = bath;
-        this.address = beyond;
+    public House(int bedrooms, double bathrooms, String address) {
+        this.bedrooms = bedrooms;
+        this.bathrooms = bathrooms;
+        this.address = address;
     }
+//    default constructor
+//    public House() {}
 
-
-    //     default constructor... if you don't add it, it will still be there. Does nothing
-//    public House() {
-//
-//    }
-
-    // Behaviours
+    // Behaviors!
     private void myMethod() {
         System.out.println("HEY! THIS IS PRIVATE!");
     }
@@ -46,13 +39,22 @@ public class House {
         this.bathrooms++;
     }
 
-    // can generate
     public String toString() {
-        String output = "This house is located at " + this.address + ".";
-        output+= " It has " + this.bedrooms + " bedrooms and " + this.bathrooms + " bathrooms.";
-        return output;
+        return "House {" +
+                "bedrooms=" + bedrooms +
+                ", bathrooms=" + bathrooms +
+                ", address='" + address + '\'' +
+                ", length=" + length +
+                ", width=" + width +
+                ", occupied=" + occupied +
+                '}';
     }
 
+    //    public String toString() {
+//        String output = "This house is located at: " + this.address + ". ";
+//        output += "It has " + this.bedrooms + " bedrooms and " + this.bathrooms + " bathrooms";
+//        return output;
+//    }
 
     // Derived Property
     public int getSqFootage() {
@@ -60,8 +62,7 @@ public class House {
         return width * length;
     }
 
-
-    // Setters and Getters (can generate)
+    // Setters & Getters
     public int getBedrooms() {
         return bedrooms;
     }
@@ -72,7 +73,6 @@ public class House {
 //        } else {
 //            this.bedrooms = bedrooms;
 //        }
-//
 //    }
 
     public double getBathrooms() {
@@ -85,7 +85,6 @@ public class House {
 //        } else {
 //            this.bathrooms = bathrooms;
 //        }
-//
 //    }
 
     public String getAddress() {
@@ -95,7 +94,6 @@ public class House {
 //    public void setAddress(String address) {
 //        this.address = address;
 //    }
-
 
 
     public int getLength() {
@@ -113,9 +111,6 @@ public class House {
 //    public void setWidth(int width) {
 //        this.width = width;
 //    }
-
-
-
 
     public boolean isOccupied() {
         return occupied;
