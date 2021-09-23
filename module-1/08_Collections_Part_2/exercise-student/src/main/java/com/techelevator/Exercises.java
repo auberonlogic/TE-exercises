@@ -269,9 +269,29 @@ public class Exercises {
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse,
 			Map<String, Integer> remoteWarehouse) {
 
+		Map<String, Integer> consolidatedWarehouse = new HashMap<>();
 
+		// put main keys in consolidated
+		for (String key : mainWarehouse.keySet()) {
+			consolidatedWarehouse.put(key, 0);
+		}
 
-		return null;
+		// put remote keys in consolidated
+		for (String key : remoteWarehouse.keySet()) {
+			consolidatedWarehouse.put(key, 0);
+		}
+
+		// combine values with keys
+		for (String key : consolidatedWarehouse.keySet()) {
+			if(mainWarehouse.containsKey(key) && remoteWarehouse.containsKey(key)) {
+				consolidatedWarehouse.put(key, (mainWarehouse.get(key) + remoteWarehouse.get(key)));
+			} else if (mainWarehouse.containsKey(key)){
+				consolidatedWarehouse.put(key, mainWarehouse.get(key));
+			} else {
+				consolidatedWarehouse.put(key, remoteWarehouse.get(key));
+			}
+		}
+		return consolidatedWarehouse;
 	}
 
 	/*
@@ -291,18 +311,18 @@ public class Exercises {
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
 
-		/*public int last2(String str) {
+		Map<String, Integer> outputMap = new HashMap<>();
+
+		for (String key : words) {
 			int count = 0;
-			for (int i = 0; i < str.length() - 2; i++) {
-				if (str.substring(i, i + 2).equals(str.substring(str.length()-2))) {
+			for (int i = 0; i < key.length() - 2; i++) {
+				if (key.substring(i, i + 2).equals(key.substring(key.length()-2))) {
 					count++;
 				}
 			}
-			return count;
-*/
-
-
-		return null;
+			outputMap.put(key, count);
+		}
+		return outputMap;
 	}
 
 }
