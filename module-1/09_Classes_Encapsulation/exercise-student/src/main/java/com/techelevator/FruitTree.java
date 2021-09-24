@@ -22,7 +22,7 @@ public class FruitTree {
         }
     }
 
-    // Getters & Setters
+    // Getters
     public String getTypeOfFruit() {
         return typeOfFruit;
     }

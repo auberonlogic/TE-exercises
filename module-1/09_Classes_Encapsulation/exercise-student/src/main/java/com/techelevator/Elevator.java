@@ -20,7 +20,6 @@ public class Elevator {
 
     public void closeDoor() {
         doorOpen = false;
-
     }
 
     public void goUp(int desiredFloor) {
