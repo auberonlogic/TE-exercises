@@ -176,7 +176,6 @@ public class Exercises {
 	 */
 	public Map<String, Integer> wordCount(String[] words) {
 
-
 		Map<String, Integer> stringTimes = new HashMap<>();
 
 		for (String word : words) {
@@ -228,7 +227,7 @@ public class Exercises {
 		// create map for tracking word count
 		// create output map
 		Map<String, Integer> multiplesCount	 = new HashMap<>();
-		Map<String, Boolean> trueMultiples = new HashMap<>();
+		Map<String, Boolean> outputMap = new HashMap<>();
 
 		// puts input words into multiplesCount as keys, all values 0
 		for (String word : words) {
@@ -245,15 +244,15 @@ public class Exercises {
 		// iterates through keys of multiple count and assigns booleans depending on the number of the value from multiplesCount
 		for (String word : multiplesCount.keySet()) {
 			if(multiplesCount.get(word) > 1) {
-				trueMultiples.put(word, true);
+				outputMap.put(word, true);
 			} else {
-				trueMultiples.put(word, false);
+				outputMap.put(word, false);
 			}
 
 		}
-		System.out.println(trueMultiples);
+		System.out.println(outputMap);
 
-		return trueMultiples;
+		return outputMap;
 	}
 
 	/*
@@ -324,5 +323,4 @@ public class Exercises {
 		}
 		return outputMap;
 	}
-
 }
