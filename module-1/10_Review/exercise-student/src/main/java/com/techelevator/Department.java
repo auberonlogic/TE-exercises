@@ -12,9 +12,6 @@ public class Department {
     }
 
 
-
-
-
     // Setters & Getters
     public int getDepartmentId() {
         return departmentId;

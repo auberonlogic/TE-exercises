@@ -24,9 +24,7 @@ public class Airplane {
                 return true;
             }
             return false;
-            }
-
-        if (!forFirstClass) {
+        } else {
             if (getAvailableCoachSeats() > totalNumberOfSeats) {
                 bookedCoachSeats += totalNumberOfSeats;
                 return true;
@@ -34,7 +32,6 @@ public class Airplane {
         }
         return false;
     }
-
 
     // Derived Methods
     public int getAvailableFirstClassSeats() {

@@ -10,7 +10,7 @@ public class Elevator {
     // Constructor
     public Elevator(int numberOfLevels) {
         this.numberOfFloors = numberOfLevels;
-        currentFloor = 1;
+        this.currentFloor = 1;
     }
 
     // Methods
