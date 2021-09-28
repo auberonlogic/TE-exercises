@@ -8,9 +8,9 @@ public class Department {
 
     // Constructor
     public Department(int departmentId, String name) {
-
+        this.departmentId = departmentId;
+        this.name = name;
     }
-
 
     // Setters & Getters
     public int getDepartmentId() {

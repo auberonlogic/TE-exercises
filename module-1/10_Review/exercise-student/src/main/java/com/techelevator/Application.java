@@ -5,14 +5,13 @@ import java.util.List;
 
 public class Application {
     List<Department> departments = new ArrayList<>();
+    List<Employee> employees = new ArrayList<>();
+
     /**
      * The main entry point in the application
      * @param args
      */
     public static void main(String[] args) {
-
-        // Instance variable
-
 
         Application app = new Application();
         app.run();
@@ -60,9 +59,8 @@ public class Application {
      */
     private void printDepartments() {
         System.out.println("------------- DEPARTMENTS ------------------------------");
-        for (int i = 0; i < departments.size(); i++) {
-            System.out.print("Index " + i + ": ");
-            System.out.println(departments.toString());
+        for (Department dept : departments) {
+            System.out.println(dept.getName());
         }
     }
 
@@ -70,6 +68,7 @@ public class Application {
      * Create employees and add them to the collection of employees
      */
     private void createEmployees() {
+        Employee dj = new Employee();
 
     }
 
