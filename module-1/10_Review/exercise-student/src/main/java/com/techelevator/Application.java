@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
+    List<Department> departments = new ArrayList<>();
     /**
      * The main entry point in the application
      * @param args
@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) {
 
         // Instance variable
-        List<Department> departments = new ArrayList<>();
+
 
         Application app = new Application();
         app.run();
@@ -46,6 +46,12 @@ public class Application {
      * Create departments and add them to the collection of departments
      */
     private void createDepartments() {
+        Department marketing = new Department(1, "Marketing");
+        Department sales = new Department(2, "Sales");
+        Department engineering = new Department(3, "Engineering");
+        departments.add(marketing);
+        departments.add(sales);
+        departments.add(engineering);
 
     }
 
@@ -54,7 +60,10 @@ public class Application {
      */
     private void printDepartments() {
         System.out.println("------------- DEPARTMENTS ------------------------------");
-
+        for (int i = 0; i < departments.size(); i++) {
+            System.out.print("Index " + i + ": ");
+            System.out.println(departments.toString());
+        }
     }
 
     /**
