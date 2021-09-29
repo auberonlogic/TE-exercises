@@ -10,11 +10,6 @@ public class Pig extends FarmAnimal implements Sellable {
         price = new BigDecimal("300.00");
     }
 
-    @Override
-    public void eat() {
-        System.out.println("SLOP!");
-    }
-
     public BigDecimal getPrice() {
         return price;
     }
