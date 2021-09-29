@@ -6,6 +6,6 @@ public interface Singable {
     // in an interface, everything is public
 
     String getName();           // abstract method
-    public String getSound();   // abstract method
+    String getSound();   // abstract method
 
 }
