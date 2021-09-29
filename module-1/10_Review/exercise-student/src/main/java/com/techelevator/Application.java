@@ -69,6 +69,11 @@ public class Application {
      */
     private void createEmployees() {
         Employee dj = new Employee();
+        dj.setFirstName("Dean");
+        dj.setLastName("Johnson");
+        dj.setEmployeeId(1);
+        dj.setEmail("djohnson@teams.com");
+        dj.setDepartment(departments.get(0));
 
     }
 
