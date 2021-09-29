@@ -20,11 +20,7 @@ public class BankCustomer implements Accountable {
         for (Accountable account : accounts) {
             totalBalance += account.getBalance();
         }
-        if (totalBalance < 25000) {
-            return false;
-        } else {
-            return true;
-        }
+        return totalBalance >= 25000;
     }
 
     @Override
@@ -59,5 +55,4 @@ public class BankCustomer implements Accountable {
     public Accountable[] getAccounts() {
         return accounts.toArray(new Accountable[0]);
     }
-
 }

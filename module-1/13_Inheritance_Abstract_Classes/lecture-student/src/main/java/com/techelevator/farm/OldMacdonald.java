@@ -4,7 +4,7 @@ public class OldMacdonald {
 	public static void main(String[] args) {
 
 		Singable[] singables =
-				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor()};
+				new Singable[] {new Heifer(), new Chicken(), new Pig(), new Tractor(), new Cat()};
 
 		for (Singable singable : singables) {
 			String name = singable.getName();
@@ -19,11 +19,18 @@ public class OldMacdonald {
 			System.out.println();
 		}
 
-		Sellable[] sellables = new Sellable[] {new Cow(), new Pig(), new Egg()};
+		Sellable[] sellables = new Sellable[] {new Heifer(), new Pig(), new Egg()};
 
 		for (Sellable sellable : sellables) {
 			System.out.println("Step right up and get your " + sellable.getName());
 			System.out.println("Only $" + sellable.getPrice());
 		}
+
+
+//		final int x;
+//		x = 7;
+
+		// will not work. variable is locked, final.
+		// x++;
 	}
 }
