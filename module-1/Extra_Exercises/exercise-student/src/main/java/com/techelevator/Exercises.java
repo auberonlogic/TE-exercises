@@ -9,7 +9,13 @@ public class Exercises {
 	 arrayCount9([1, 9, 9, 3, 9]) → 3
 	 */
 	public int arrayCount9(int[] nums) {
-		return 0;
+		int count = 0;
+		for (int num : nums) {
+			if (num == 9) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/*
@@ -19,6 +25,11 @@ public class Exercises {
 	 arrayFront9([1, 2, 3, 4, 5]) → false
 	 */
 	public boolean arrayFront9(int[] nums) {
+		for (int num : nums) {
+			if (num == 9 && )
+
+
+		}
 		return false;
 	}
 
@@ -71,7 +82,12 @@ public class Exercises {
 	 no23([3, 5]) → false
 	 */
 	public boolean no23(int[] nums) {
-		return false;
+		for (int num : nums) {
+			if (num == 2 || num == 3) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/*
