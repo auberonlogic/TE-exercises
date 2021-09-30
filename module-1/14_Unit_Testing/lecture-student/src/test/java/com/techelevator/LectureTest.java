@@ -73,12 +73,11 @@ public class LectureTest {
 	public void startsWith_returns_true_if_a_string_starts_with_the_specified_characters() {
 		System.out.println("startsWith_returns_true_if_a_string_starts_with_the_specified_characters"); // FOR DEMONSTRATION PURPOSES ONLY, don't do this in your own tests
 
-		/* The assertTrue method validates that the boolean value provided as an argument
+		/* The assertTrue method validates that the boolean value provided as an arugment
 		 * is true and fails the test if it is false. */
 
 		String theString = "Hello World!"; // Arrange
 		boolean startsWithHello = theString.startsWith("Hello"); // Act
-		Assert.assertTrue(startsWithHello);
 
 		/* every assert method allows the first parameter to be a String that contains a message
 		 * that should be displayed when the assertion fails
@@ -95,11 +94,6 @@ public class LectureTest {
 
 		/* The fail method will cause a test to fail */
 
-		this_method_is_not_a_test_because_it_does_not_have_the_Test_annotation();
-
-/*		if (condition that will always cause a fail) {
-
-		}*/
 		Assert.fail("This is how I can force a test to fail");
 	}
 
