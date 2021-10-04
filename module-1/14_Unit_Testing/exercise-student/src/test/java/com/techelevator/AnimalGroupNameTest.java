@@ -50,17 +50,4 @@ public class AnimalGroupNameTest {
         Assert.assertEquals("unknown", output);
     }
 
-/*    @Test
-    public void test_getHerd_was_a_String_entered() {
-        //  ARRANGE
-        AnimalGroupName agn = new AnimalGroupName();
-        ;
-
-        // ACT
-        String output = agn.getHerd();
-
-        // ASSERT
-        Assert.assertEquals("Tower", output);
-        Assert.assertSame(String, input);
-    }*/
 }
