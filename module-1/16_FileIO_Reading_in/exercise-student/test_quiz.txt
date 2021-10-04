@@ -1,6 +1,2 @@
-What is the only temperature that is the same in Fahrenheit and Celsius?|20 degrees|100 degrees|-100 degrees|-40 degrees*
-In the movie Office Space, what kind of stapler does Milton have stolen from him by that bastard Lumburgh?|Bostitch|PaperPro|Swingline*|Optima
-How many different combinations does a Rubix cube have?|25 million|43 quadrillion|43 quintillion*|62 trillion
-How many colors are needed on a map to make sure that no border will share a color?|Four*|Six|Eight|Twelve
-What is the average airspeed velocity of a (European) unladen swallow?|55 mph|24 mph*|8 mph|140 mph
-When was the equal sign invented?|343 BC|904 AD|1557 AD*|1751 AD
+What color is the sky?|yellow|blue*|green|red
+A skeleton walks into a bar, and says to the bartender, "Give me a beer and a ..."|hair brush|dry erase marker|mop*|yo-yo
