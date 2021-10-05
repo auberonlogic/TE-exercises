@@ -44,4 +44,52 @@ public class WordCountTest {
         Assert.assertEquals(output, wc.getCount(input));
     }
 
+    @Test
+    public void null_input_returns_null_output() {
+
+        WordCount wc = new WordCount();
+        Assert.assertNotNull(wc);
+    }
+
+    @Test
+    public void please_work() {
+        // Arrange
+        WordCount wc = new WordCount();
+        String[] input = "ba ba black sheep".split(" ");
+        Map<String, Integer> expected = new HashMap<>();
+        expected.put("ba", 2);
+        expected.put("black", 1);
+        expected.put("sheep", 1);
+
+        // Act
+        Map<String, Integer> output = wc.getCount(input);
+
+        // Assert
+        // expected keys == output keys
+        // expected values == output values
+        Assert.assertNotNull(output);
+        Assert.assertEquals(expected, output);
+    }
+
+    @Test
+    public void null_input() {
+        WordCount wc = new WordCount();
+        Map<String, Integer> output = wc.getCount(null);
+        Map<String, Integer> expected = new HashMap<>();
+
+        Assert.assertNotNull(output);
+        Assert.assertEquals(expected, output);
+    }
+
+    @Test
+    public void empty_String_Array_input() {
+        WordCount wc = new WordCount();
+        String[] input = new String[0];
+        Map<String, Integer> output = wc.getCount(input);
+        Map<String, Integer> expected = new HashMap<>();
+
+        Assert.assertEquals(expected, output);
+
+    }
+
 }
