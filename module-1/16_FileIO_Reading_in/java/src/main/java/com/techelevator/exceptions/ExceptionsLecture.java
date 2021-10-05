@@ -1,5 +1,7 @@
 package com.techelevator.exceptions;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ExceptionsLecture {
@@ -59,24 +61,28 @@ public class ExceptionsLecture {
 		System.out.println("PROGRAM END");
 	}
 
-	public static double calculateHotelRoomCharge(int numberOfNights, int numberOfGuests) {
+	public static int calculateHotelRoomCharge(int numberOfNights, int numberOfGuests) throws HotelException {
 
 		int extraGuestCharge = 25;
 		int roomRate = 100;
 
 		if (numberOfNights < 1) {
 			System.out.println("Don't do that!");
-			throw new IllegalArgumentException("Non-positive number of nights!");
+			throw new HotelException();
 		}
 
 		if (numberOfGuests < 1) {
-			throw new IllegalArgumentException("Non-positive number of guests!");
+			System.out.println("Bruh... seriously, stop.");
+			throw new HotelException();
 		}
 
 		return ((numberOfGuests - 1) * extraGuestCharge) * numberOfNights + (numberOfNights * roomRate);
 	}
 
 	public static void main(String[] args) {
+
+		System.out.println("Let's book a hotel room!");
+
 		Scanner darkly = new Scanner(System.in);
 
 		System.out.print("How many people >>> ");
@@ -85,7 +91,38 @@ public class ExceptionsLecture {
 		int nights = Integer.parseInt(darkly.nextLine());
 
 
-		double totalCharge = calculateHotelRoomCharge(nights,ppl);
+		int totalCharge = 0;
+		try {
+			totalCharge = calculateHotelRoomCharge(nights,ppl);
+		} catch (HotelException e) {
+			System.out.println("STOP MESSING WITH THE HOTEL PEOPLE!!!");
+		}
 		System.out.println(ppl + " guests for " + nights + " nights has a total charge of " +  totalCharge);
+
+//		try {
+//			int totalCharge = calculateHotelRoomCharge(nights,ppl);
+//			System.out.println(ppl + " guests for " + nights + " nights has a total charge of " +  totalCharge);
+//		} catch (Exception e) {
+//			System.out.println("Caught an exception in Main that was generated elsewhere");
+//		}
+
+		File f = new File("doesn'texist.txt");
+
+		if (!f.exists()) {
+			System.out.println("Try again!");
+		}
+
+		Scanner k = new Scanner(System.in);
+
+		try {
+			Scanner s = new Scanner(f);
+		} catch	(FileNotFoundException e) {
+			System.out.println("Caught a file not found exception!");
+		} catch (StringIndexOutOfBoundsException e) {
+			System.out.println("String out of bounds exception");
+		} catch (Exception e) {
+			System.out.println("General exception");
+		}
+
 	}
 }
