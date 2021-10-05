@@ -1,5 +1,7 @@
 package com.techelevator.exceptions;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ExceptionsLecture {
@@ -66,7 +68,8 @@ public class ExceptionsLecture {
 
 		if (numberOfNights < 1) {
 			System.out.println("Don't do that!");
-			throw new IllegalArgumentException("Non-positive number of nights!");
+			//throw new IllegalArgumentException("Non-positive number of nights!");
+			throw new HotelException();
 		}
 
 		if (numberOfGuests < 1) {
@@ -77,6 +80,7 @@ public class ExceptionsLecture {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("Let's book a hotel room!");
 		Scanner darkly = new Scanner(System.in);
 
 		System.out.print("How many people >>> ");
