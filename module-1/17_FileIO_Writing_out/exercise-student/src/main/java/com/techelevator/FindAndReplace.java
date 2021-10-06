@@ -1,7 +1,6 @@
 package com.techelevator;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -20,36 +19,26 @@ public class FindAndReplace {
 
         System.out.println("What is the source file?");
         String sourceFileString = kb.nextLine();
+        File sourceFile = new File(sourceFileString);
+        try {
+            Scanner source = new Scanner(sourceFile);
+        } catch (IOException e) {
+            System.out.println("Not a valid file. Ending program...");
+            System.exit(0);
+        }
 
         System.out.println("What is the destination file?");
         String destinationFileString = kb.nextLine();
-
-        File sourceFile = new File(sourceFileString);
         File destinationFile = new File(destinationFileString);
-
-        if (destinationFile.exists()) {
-            destinationFile.delete();
-            try {
-                destinationFile.createNewFile();
-            } catch (IOException e) {
-                System.out.println("File already exists.");
+        try (Scanner input = new Scanner(sourceFile); PrintWriter pw = new PrintWriter(destinationFile)) {
+            while(input.hasNextLine()) {
+                String line = input.nextLine();
+                line = line.replace(searchWord, replacementWord);
+                pw.println(line);
             }
+        } catch (IOException e) {
+            System.out.println("Not a valid destination. Ending program...");
+            System.exit(0);
         }
-
-        try (PrintWriter printWriter = new PrintWriter(destinationFile);) { // try with resources creates redundant close
-            Scanner inputStreamer = new Scanner(sourceFile);
-
-
-            while (inputStreamer.hasNextLine()) {
-                String currentLine = inputStreamer.nextLine();
-                printWriter.println(currentLine);
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
-        }
-
     }
-
-
 }
