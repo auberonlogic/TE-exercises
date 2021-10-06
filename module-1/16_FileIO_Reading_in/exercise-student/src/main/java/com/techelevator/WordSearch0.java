@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class WordSearch {
+public class WordSearch0 {
 
 	public static void main(String[] args) {
 

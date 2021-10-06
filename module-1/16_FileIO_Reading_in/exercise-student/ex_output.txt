@@ -1,0 +1,1 @@
+The most commonly occurring letter in Test phrase is s, which appeared 2 times.
