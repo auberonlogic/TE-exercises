@@ -42,7 +42,7 @@ public class WordSearchTests {
         File outFile = new File(OUT_FILE_PATH);
         PrintStream printStream = new PrintStream(outFile);
         System.setOut(printStream);
-        WordSearch.main(null);
+        WordSearch0.main(null);
 
         List<String> lines = Files.readAllLines(outFile.toPath());
         List<Integer> actual = new ArrayList<>();
@@ -74,7 +74,7 @@ public class WordSearchTests {
         File outFile = new File(OUT_FILE_PATH);
         PrintStream printStream = new PrintStream(outFile);
         System.setOut(printStream);
-        WordSearch.main(null);
+        WordSearch0.main(null);
 
         List<String> lines = Files.readAllLines(outFile.toPath());
         String actual = "";
@@ -120,7 +120,7 @@ public class WordSearchTests {
         File outFile = new File(OUT_FILE_PATH);
         PrintStream printStream = new PrintStream(outFile);
         System.setOut(printStream);
-        WordSearch.main(null);
+        WordSearch0.main(null);
 
         List<String> lines = Files.readAllLines(outFile.toPath());
         List<Integer> actual = new ArrayList<>();
@@ -157,7 +157,7 @@ public class WordSearchTests {
         File outFile = new File(OUT_FILE_PATH);
         PrintStream printStream = new PrintStream(outFile);
         System.setOut(printStream);
-        WordSearch.main(null);
+        WordSearch0.main(null);
 
         List<String> lines = Files.readAllLines(outFile.toPath());
         String actual = "";
