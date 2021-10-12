@@ -2,6 +2,3 @@
 -- Expected answer is around 8,300,000
 -- (1 row)
 
-SELECT MAX(population) AS largest_city_population
-FROM city
-;
