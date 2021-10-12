@@ -68,10 +68,9 @@ public class ExceptionsLecture {
 
 		if (numberOfNights < 1) {
 			System.out.println("Don't do that!");
-<<<<<<< HEAD
-=======
+
 			//throw new IllegalArgumentException("Non-positive number of nights!");
->>>>>>> f827eb6d9bfb6116e11a9279ac1e1bbbedd3d2c0
+
 			throw new HotelException();
 		}
 
@@ -84,13 +83,11 @@ public class ExceptionsLecture {
 	}
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
+
 
 		System.out.println("Let's book a hotel room!");
 
-=======
 		System.out.println("Let's book a hotel room!");
->>>>>>> f827eb6d9bfb6116e11a9279ac1e1bbbedd3d2c0
 		Scanner darkly = new Scanner(System.in);
 
 		System.out.print("How many people >>> ");
