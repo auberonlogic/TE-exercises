@@ -138,3 +138,11 @@ SELECT park_name, date_established
 FROM park
 WHERE date_established < '1900-01-01'
 ;
+
+SELECT * FROM city;
+
+SELECT * FROM state;
+
+SELECT * FROM park;
+
+SELECT * FROM park_state;
