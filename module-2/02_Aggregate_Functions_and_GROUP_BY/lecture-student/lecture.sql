@@ -211,3 +211,19 @@ WHERE city_id NOT IN ( SELECT city_id FROM city WHERE state_abbreviation = 'TX' 
 ;
 
 
+SELECT * FROM city;
+
+SELECT * FROM park;
+
+SELECT * FROM park_state;
+
+SELECT * FROM state;
+
+
+SELECT census_region, AVG(population) AS average_population, MIN(population) AS min_population, MAX(population) AS max_population
+FROM state
+WHERE census_region IS NOT null
+GROUP BY census_region
+ORDER BY average_population ASC
+;
+
