@@ -110,14 +110,129 @@ FROM park_state RIGHT JOIN state USING(state_abbreviation)
 
 -- MovieDB
 -- After creating the MovieDB database and running the setup script, make sure it is selected in DbVisualizer and confirm it is working correctly by writing queries to retrieve...
+
+-- The names of all the movie genres
+
+
+-- The titles of all the Comedy movies
+
+
+
 SELECT * FROM collection;
 SELECT * FROM genre;
 SELECT * FROM movie;
 SELECT * FROM movie_actor;
 SELECT * FROM movie_genre;
 SELECT * FROM person;
--- The names of all the movie genres
+
+-- 21. For every person in the person table with the first name of "George", list the number of movies they've been in
+-- include all Georges, even those that have not appeared in any movies. Display the names in alphabetical order. (59 rows)
+-- Name the count column 'num_of_movies'
+SELECT *
+FROM movie m
+INNER JOIN ;
 
 
--- The titles of all the Comedy movies
+
+
+SELECT *
+FROM person p
+INNER JOIN movie m ON p.person_id = m.director_id
+WHERE p.person_name LIKE 'George Cukor%'
+-- GROUP BY p.person_name
+;
+
+SELECT p.person_name, COUNT(m.title) AS num_of_movies
+FROM person p
+LEFT JOIN movie_actor ma ON ma.actor_id = p.person_id
+LEFT JOIN movie m ON p.person_id = m.director_id
+WHERE p.person_name LIKE 'George %'
+GROUP BY p.person_id
+ORDER BY p.person_name
+
+;
+
+
+SELECT p.person_name, COUNT(m.movie_id) AS num_of_movies
+FROM person p
+LEFT JOIN movie_actor ma ON p.person_id = ma.actor_id
+LEFT JOIN movie m USING(movie_id)
+WHERE p.person_name LIKE 'George %'
+GROUP BY p.person_id
+ORDER BY p.person_name
+;
+
+
+
+
+SELECT m.title, m.length_minutes, m.release_date
+FROM movie m
+INNER JOIN movie_genre mg USING(movie_id)
+INNER JOIN genre g USING(genre_id)
+WHERE g.genre_name = 'Action'
+ORDER BY m.length_minutes DESC, m.release_date DESC
+LIMIT 5
+;
+
+
+
+
+SELECT g.genre_name, COUNT(g.genre_name)
+FROM movie m
+INNER JOIN movie_genre mg USING(movie_id)
+INNER JOIN genre g USING(genre_id)
+GROUP BY g.genre_name
+;
+
+
+
+
+
+SELECT m.title, m.tagline, g.genre_name
+FROM movie m
+INNER JOIN movie_genre mg USING(movie_id)
+INNER JOIN genre g USING(genre_id)
+INNER JOIN movie_actor ma USING(movie_id)
+INNER JOIN person p ON p.person_id = ma.actor_id
+WHERE g.genre_name = 'Family' AND p.person_name = 'Samuel L. Jackson'
+;
+
+
+
+SELECT DISTINCT p.person_name, p.birthday
+FROM person p
+INNER JOIN movie_actor ma ON ma.actor_id = p.person_id
+INNER JOIN movie m USING(movie_id)
+WHERE p.birthday BETWEEN '1950-01-01' AND '1959-12-31' AND m.release_date BETWEEN '1985-01-01' AND '1985-12-31'
+;
+
+
+
+
+
+SELECT DISTINCT person.person_name
+FROM movie
+INNER JOIN collection USING(collection_id)
+INNER JOIN movie_actor USING(movie_id)
+INNER JOIN person ON movie_actor.actor_id = person.person_id
+WHERE collection.collection_name = 'Back to the Future Collection'
+;
+
+-- 15. The title of the movie and the name of director for movies where the director was also an actor in the same movie (73 rows)
+SELECT m.title, p.person_name, m.director_id
+FROM movie m -- renames movie to m
+INNER JOIN movie_actor ma ON m.movie_id = ma.movie_id AND ma.actor_id = m.director_id
+INNER JOIN person p ON ma.actor_id = p.person_id
+;
+
+SELECT m.title, p.person_name, m.director_id
+FROM movie m -- renames movie to m
+INNER JOIN movie_actor ma ON m.movie_id = ma.movie_id
+INNER JOIN person p ON ma.actor_id = p.person_id
+WHERE ma.actor_id = m.director_id
+;
+
+
+
+
 
