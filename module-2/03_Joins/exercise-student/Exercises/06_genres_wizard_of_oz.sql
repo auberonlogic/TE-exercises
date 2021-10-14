@@ -1,9 +1,9 @@
 -- 6. The genres of "The Wizard of Oz" (3 rows)
 
 
-SELECT genre.genre_name
-FROM movie
-INNER JOIN movie_genre USING(movie_id)
-INNER JOIN genre USING(genre_id)
-WHERE movie.title = 'The Wizard of Oz'
+SELECT g.genre_name
+FROM movie m
+INNER JOIN movie_genre mg USING(movie_id)
+INNER JOIN genre g USING(genre_id)
+WHERE m.title = 'The Wizard of Oz'
 ;

@@ -2,10 +2,10 @@
 -- Order the results by the actor names (A-Z). (48 rows)
 
 
-SELECT person_name, movie.title
-FROM person
-INNER JOIN movie_actor ON person.person_id = movie_actor.actor_id
-INNER JOIN movie USING(movie_id)
-WHERE person.person_name LIKE '%Jones' AND person.person_name NOT LIKE '%Zeta%'
-Order BY person_name
+SELECT p.person_name, m.title
+FROM person p
+INNER JOIN movie_actor ma ON p.person_id = ma.actor_id
+INNER JOIN movie m USING(movie_id)
+WHERE p.person_name LIKE '%Jones' AND p.person_name NOT LIKE '%Zeta%'
+Order BY p.person_name
 ;

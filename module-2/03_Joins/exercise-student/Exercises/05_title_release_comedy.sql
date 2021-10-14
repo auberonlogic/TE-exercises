@@ -2,10 +2,10 @@
 -- Order the results by release date, earliest to latest. (220 rows)
 
 
-SELECT movie.title, movie.release_date
-FROM movie
-INNER JOIN movie_genre USING(movie_id)
-INNER JOIN genre USING(genre_id)
-WHERE genre_name = 'Comedy'
-ORDER BY movie.release_date
+SELECT m.title, m.release_date
+FROM movie m
+INNER JOIN movie_genre mg USING(movie_id)
+INNER JOIN genre g USING(genre_id)
+WHERE g.genre_name = 'Comedy'
+ORDER BY m.release_date
 ;

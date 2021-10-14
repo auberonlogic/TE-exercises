@@ -1,8 +1,8 @@
 -- 13. The directors of the movies in the "Harry Potter Collection" (4 rows)
 
-SELECT DISTINCT person.person_name
-FROM movie
-INNER JOIN collection USING(collection_id)
-INNER JOIN person ON movie.director_id = person.person_id
-WHERE collection.collection_name = 'Harry Potter Collection'
+SELECT DISTINCT p.person_name
+FROM movie m
+INNER JOIN collection c USING(collection_id)
+INNER JOIN person p ON m.director_id = p.person_id
+WHERE c.collection_name = 'Harry Potter Collection'
 ;

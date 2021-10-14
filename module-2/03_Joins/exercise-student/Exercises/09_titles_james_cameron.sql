@@ -1,7 +1,7 @@
 -- 9. The titles of movies directed by James Cameron (6 rows)
 
-SELECT movie.title
-FROM movie
-INNER JOIN person ON person.person_id = movie.director_id
-WHERE person.person_name = 'James Cameron'
+SELECT m.title
+FROM movie m
+INNER JOIN person p ON p.person_id = m.director_id
+WHERE p.person_name = 'James Cameron'
 ;

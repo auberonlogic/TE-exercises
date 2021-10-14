@@ -1,8 +1,8 @@
 -- 12. The titles of the movies in the "Star Wars Collection" that weren't directed by George Lucas (5 rows)
 
-SELECT movie.title
-FROM movie
-INNER JOIN collection USING(collection_id)
-INNER JOIN person ON movie.director_id = person.person_id
-WHERE collection.collection_name = 'Star Wars Collection' AND person.person_name != 'George Lucas'
+SELECT m.title
+FROM movie m
+INNER JOIN collection c USING(collection_id)
+INNER JOIN person p ON m.director_id = p.person_id
+WHERE c.collection_name = 'Star Wars Collection' AND p.person_name != 'George Lucas'
 ;
