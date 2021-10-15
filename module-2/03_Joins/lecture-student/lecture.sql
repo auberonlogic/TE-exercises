@@ -234,5 +234,84 @@ WHERE ma.actor_id = m.director_id
 
 
 
+-- 16. The names and birthdays of actors born in the 1950s who acted in movies that were released in 1985 (20 rows)
+
+SELECT DISTINCT p.person_name, p.birthday
+FROM person p
+INNER JOIN movie_actor ma ON ma.actor_id = p.person_id
+INNER JOIN movie m USING(movie_id)
+WHERE p.birthday BETWEEN '1950-01-01' AND '1959-12-31' AND m.release_date BETWEEN '1985-01-01' AND '1985-12-31'
+;
+
+SELECT p.person_name, m.title, m.overview
+FROM person p
+JOIN movie_actor ma ON p.person_id = ma.actor_id
+JOIN movie m USING(movie_id)
+WHERE p.person_name LIKE '%W. Bush'
+;
+
+
+
+-- 17. The titles and taglines of movies that are in the "Family" genre and Samuel L. Jackson has acted in (4 rows)
+
+
+SELECT m.title, m.tagline, m.overview
+FROM movie m
+INNER JOIN movie_genre mg USING(movie_id)
+INNER JOIN genre g USING(genre_id)
+INNER JOIN movie_actor ma USING(movie_id)
+INNER JOIN person p ON p.person_id = ma.actor_id
+WHERE g.genre_name = 'Family' AND p.person_name = 'Samuel L. Jackson'
+;
+
+SELECT m.title, m.release_date, p.person_name
+FROM movie m
+JOIN movie_actor ma USING(movie_id)
+JOIN person p ON p.person_id = ma.actor_id
+WHERE title = 'Snakes on a Plane'
+;
+
+
+SELECT p.person_name, COUNT(m.title) AS num_movies
+FROM movie m
+JOIN movie_actor ma USING(movie_id)
+JOIN person p ON p.person_id = ma.actor_id
+GROUP BY p.person_name
+ORDER BY num_movies DESC
+;
+
+-- 21. For every person in the person table with the first name of "George", list the number of movies they've been in
+-- include all Georges, even those that have not appeared in any movies. Display the names in alphabetical order. (59 rows)
+-- Name the count column 'num_of_movies'
+
+SELECT p.person_name, COUNT(m.movie_id) AS num_of_movies
+FROM person p
+LEFT JOIN movie_actor ma ON p.person_id = ma.actor_id
+LEFT JOIN movie m USING(movie_id)
+WHERE p.person_name LIKE 'George %'
+GROUP BY p.person_id
+ORDER BY p.person_name
+;
+
+
+--------------------- Playing around ---------------------
+
+-- Write a query that returns the count of movies for all actors born on a leap day
+
+SELECT *
+FROM person p
+-- JOIN movie_actor ma ON p.person_id = ma.actor_id
+WHERE CAST(p.birthday AS varchar) = '01%'
+;
+
+SELECT DISTINCT person_name, birthday
+FROM person
+WHERE CAST(birthday AS varchar) LIKE '%06'
+;
+
+
+
+-- Write a query that returns a new column actor_age in leap years for all actors born on a leap day
+
 
 
