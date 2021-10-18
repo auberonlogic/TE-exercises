@@ -1,5 +1,7 @@
 
 -- schema.sql is usually the file name for the table and relationship setup script
+-- DDL: Data Definition Language
+-- Idempotent / Deterministic
 
 -- This script is idempotent (brings you to the same deterministic place no matter how many times it is run)
 
@@ -37,14 +39,14 @@ CREATE TABLE painting (
   CONSTRAINT fk_painting_artist FOREIGN KEY (artist_id) REFERENCES artist (artist_id)
 );
 
-
+-- Association Table
 CREATE TABLE purchase (
-  purchase_id serial PRIMARY KEY,
   price money NOT NULL,
   purchase_date timestamp NOT NULL,
   customer_id int NOT NULL,
   painting_id int NOT NULL,
   
+  CONSTRAINT pk_purchase PRIMARY KEY (customer_id, painting_id, purchase_date), -- compound key, natural key
   CONSTRAINT fk_purchase_customer FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
   CONSTRAINT fk_purchase_painting FOREIGN KEY (painting_id) REFERENCES painting (painting_id)
 );
