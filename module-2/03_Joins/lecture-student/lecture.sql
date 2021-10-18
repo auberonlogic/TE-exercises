@@ -101,15 +101,62 @@ FROM park_state RIGHT JOIN state USING(state_abbreviation)
 
 -- UNION
 
--- Write a query to retrieve all the place names in the city and state tables that begin with "W" sorted alphabetically. (Washington is the name of a city and a state--how many times does it appear in the results?)
+-- Write a query to retrieve all the place names in the city and state tables that begin with "W" sorted alphabetically.
+-- (Washington is the name of a city and a state--how many times does it appear in the results?)
+SELECT city_name, state_name
+FROM city INNER JOIN state USING(state_abbreviation)
+WHERE city_name LIKE 'W%' OR state_name LIKE 'W%'
+;
+
+
+SELECT city_name AS place_name, state_abbreviation
+FROM city
+WHERE city_name LIKE 'W%'
+
+UNION ALL -- by default, UNION removes duplicates
+-- UNION ALL is faster cause it doesn't have to parse tables for duplicates
+-- columns produced by UNIONS must be same datatype.
+
+SELECT state_name AS place_name, state_abbreviation
+FROM state
+WHERE state_name LIKE 'W%'
+ORDER BY place_name
+;
+
+SELECT CAST(population AS varchar) AS place_name, state_abbreviation
+FROM city
+WHERE city_name LIKE 'W%'
+
+UNION ALL -- by default, UNION removes duplicates
+-- UNION ALL is faster cause it doesn't have to parse tables for duplicates
+-- columns produced by UNIONS must be same datatype.
+-- can cast different datatypes to match, but why would you lol
+
+SELECT state_name AS place_name, state_abbreviation
+FROM state
+WHERE state_name LIKE 'W%'
+ORDER BY place_name
+;
+
 
 
 -- Modify the previous query to include a column that indicates whether the place is a city or state.
+SELECT city_name AS place_name, 'City' AS city_or_state
+FROM city
+WHERE city_name LIKE 'W%'
 
+UNION  -- by default, UNION removes duplicates
+
+SELECT state_name AS place_name, 'State' AS city_or_state
+FROM state
+WHERE state_name LIKE 'W%'
+ORDER BY place_name
+;
 
 
 -- MovieDB
--- After creating the MovieDB database and running the setup script, make sure it is selected in DbVisualizer and confirm it is working correctly by writing queries to retrieve...
+-- After creating the MovieDB database and running the setup script, make sure it is selected in DbVisualizer and
+-- confirm it is working correctly by writing queries to retrieve...
 
 -- The names of all the movie genres
 
@@ -298,20 +345,72 @@ ORDER BY p.person_name
 
 -- Write a query that returns the count of movies for all actors born on a leap day
 
-SELECT *
+SELECT p.person_name, p.birthday AS leap_day_birthdays, COUNT(ma.movie_id) AS num_of_movies
 FROM person p
--- JOIN movie_actor ma ON p.person_id = ma.actor_id
-WHERE CAST(p.birthday AS varchar) = '01%'
-;
-
-SELECT DISTINCT person_name, birthday
-FROM person
-WHERE CAST(birthday AS varchar) LIKE '%06'
+JOIN movie_actor ma ON p.person_id = ma.actor_id
+JOIN movie m USING(movie_id)
+WHERE CAST(p.birthday AS varchar) LIKE '%02-29%'
+GROUP BY p.person_id
+ORDER BY num_of_movies DESC, leap_day_birthdays
 ;
 
 
 
 -- Write a query that returns a new column actor_age in leap years for all actors born on a leap day
+SELECT p.person_name, p.birthday AS leap_day_birthdays, p.deathday, date_part('year',AGE(p.birthday))::int AS age,  (date_part('year', AGE(p.birthday)) / 4) AS leap_year_age, COUNT(m.movie_id) AS num_of_movies -- how do I get their age from their birthday?
+                                                                                  -- And if I divide age by 4 will it be accurate?
+FROM person p
+JOIN movie_actor ma ON p.person_id = ma.actor_id
+JOIN movie m USING(movie_id)
+WHERE CAST(p.birthday AS varchar) LIKE '%02-29%' AND deathday IS null
+GROUP BY p.person_id
+--ORDER BY p.person_name
+
+UNION ALL -- so that people who are dead are not aged to the current date
+
+SELECT p.person_name, p.birthday AS leap_day_birthdays, p.deathday, date_part('year',AGE(p.deathday, p.birthday))::int AS age, (date_part('year',AGE(p.deathday, p.birthday)) / 4) AS leap_year_age, COUNT(m.movie_id) AS num_of_movies
+FROM person p
+JOIN movie_actor ma ON p.person_id = ma.actor_id
+JOIN movie m USING(movie_id)
+WHERE CAST(p.birthday AS varchar) LIKE '%02-29%' AND deathday IS NOT null
+GROUP BY p.person_id
+ORDER BY deathday
+;
+
+-- create a collection called 'Leap Day Babies Movie Collection'
+-- associate it with any movies with an actor who was born on a leap day
+
+
+
+
+
+-- number of movies for each actor born in June
+
+SELECT p.person_name, p.birthday AS june_birthdays, COUNT(ma.movie_id) AS num_of_movies
+FROM person p
+JOIN movie_actor ma ON p.person_id = ma.actor_id
+JOIN movie m USING(movie_id)
+WHERE CAST(p.birthday AS varchar) LIKE '%-06-%'
+GROUP BY p.person_id
+ORDER BY num_of_movies DESC, p.person_name
+;
+
+
+-- number of movies for each actor born in June whose last name begins with "T"
+
+SELECT p.person_name, p.birthday AS june_birthdays, COUNT(ma.movie_id) AS num_of_movies
+FROM person p
+JOIN movie_actor ma ON p.person_id = ma.actor_id
+JOIN movie m USING(movie_id)
+WHERE --CAST(p.birthday AS varchar) LIKE '%-06-%' AND 
+p.person_name LIKE '% T%' AND p.person_name NOT LIKE '% T.%' -- excludes T as a middle initial
+GROUP BY p.person_id
+ORDER BY num_of_movies DESC, p.person_name
+;
+
+
+-- number of movies an actor has been in with other actors from the database. number of same movies?
+
 
 
 
