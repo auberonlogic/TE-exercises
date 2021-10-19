@@ -38,6 +38,7 @@ CREATE TABLE event (
   duration_in_minutes int DEFAULT 30,
   group_id int,
   
+  CONSTRAINT duration_check CHECK (duration_in_minutes >= 30),
   CONSTRAINT fk_event_group FOREIGN KEY (group_id) REFERENCES interest_group (group_id)
 );
 
