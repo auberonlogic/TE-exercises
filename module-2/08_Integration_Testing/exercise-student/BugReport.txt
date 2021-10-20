@@ -1,43 +1,43 @@
 Bug 1
 -----
 Test that demonstrates problem:
-getTimesheetsByEmployeeId_returns_list_of_all_timesheets_for_employee
+
 Expected output:
-2
+
 Actual output:
-1
+
 How did you fix this bug?
-Replaced if statement in getTimeSheetsByEmployeeId with a while loop so it doesn't just look at one row.
+
 
 Bug 2
 -----
 Test that demonstrates problem:
-getTimesheetsByProjectId_returns_list_of_all_timesheets_for_project
+
 Expected output:
-3
+
 Actual output:
-2
+
 How did you fix this bug?
-Changed WHERE clause to aim at project_id rather than employee_id.
+
 
 Bug 3
 -----
 Test that demonstrates problem:
-updated_timesheet_has_expected_values_when_retrieved
+
 Expected output:
-true
+
 Actual output:
-false
+
 How did you fix this bug?
-Added a SET clause for billable in the SQL statement and then included it in the update in updateTimesheet
+
 
 Bug 4
 -----
 Test that demonstrates problem:
-getBillableHours_returns_correct_total
+
 Expected output:
-0.0
+
 Actual output:
-2.0
+
 How did you fix this bug?
-Added " AND billable = true;" to WHERE clause in getBillableHours SQL statement.
+
