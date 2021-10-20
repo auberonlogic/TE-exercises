@@ -9,6 +9,7 @@ import java.util.List;
 
 public class JdbcCityDaoTests extends BaseDaoTests {
 
+    // Mock Date (ARRANGE) -- being inserted into Mock Database in test-data.sql script
     private static final City CITY_1 = new City(1, "City 1", "AA", 11,111);
     private static final City CITY_2 = new City(2, "City 2", "BB", 22,222);
     private static final City CITY_4 = new City(4, "City 4", "AA", 44,444);
@@ -25,34 +26,37 @@ public class JdbcCityDaoTests extends BaseDaoTests {
 
     @Test
     public void getCity_returns_correct_city_for_id() {
-        City city = sut.getCity(1);
-        assertCitiesMatch(CITY_1, city);
+        City city = sut.getCity(1); // ACT
+        assertCitiesMatch(CITY_1, city);  // ASSERT
 
-        city = sut.getCity(2);
-        assertCitiesMatch(CITY_2, city);
+        city = sut.getCity(2);      // ACT
+        assertCitiesMatch(CITY_2, city);  // ASSERT
     }
 
     @Test
     public void getCity_returns_null_when_id_not_found() {
-        City city = sut.getCity(99);
-        Assert.assertNull(city);
+        City city = sut.getCity(99); // ACT
+        Assert.assertNull(city);           // ASSERT
     }
 
     @Test
     public void getCitiesByState_returns_all_cities_for_state() {
-        List<City> cities = sut.getCitiesByState("AA");
-        Assert.assertEquals(2, cities.size());
-        assertCitiesMatch(CITY_1, cities.get(0));
-        assertCitiesMatch(CITY_4, cities.get(1));
+        List<City> actualCities = sut.getCitiesByState("AA"); // ACT
 
-        cities = sut.getCitiesByState("BB");
-        Assert.assertEquals(1, cities.size());
-        assertCitiesMatch(CITY_2, cities.get(0));
+        Assert.assertNotNull(actualCities);                                 // ASSERT
+        Assert.assertEquals(2, actualCities.size());                // ASSERT
+        assertCitiesMatch(CITY_1, actualCities.get(0));                     // ASSERT
+        assertCitiesMatch(CITY_4, actualCities.get(1));                     // ASSERT
+
+        actualCities = sut.getCitiesByState("BB");
+        Assert.assertEquals(1, actualCities.size());
+        assertCitiesMatch(CITY_2, actualCities.get(0));
     }
 
     @Test
     public void getCitiesByState_returns_empty_list_for_abbreviation_not_in_db() {
         List<City> cities = sut.getCitiesByState("XX");
+        Assert.assertNotNull(cities);
         Assert.assertEquals(0, cities.size());
     }
 

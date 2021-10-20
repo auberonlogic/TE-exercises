@@ -19,10 +19,12 @@ public class JdbcStateDao implements StateDao {
     @Override
     public State getState(String stateAbbreviation) {
         State state = null;
-        String sql = "SELECT state_abbreviation, state_name FROM state WHERE state_abbreviation = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation);
-        if (results.next()) {
-            state = mapRowToState(results);
+        String sql = "SELECT state_abbreviation, state_name, state_nickname FROM state WHERE state_abbreviation = ?;";
+        if (stateAbbreviation != null && !stateAbbreviation.isEmpty()) {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation);
+            if (results.next()) {
+                state = mapRowToState(results);
+            }
         }
         return state;
     }
@@ -30,7 +32,7 @@ public class JdbcStateDao implements StateDao {
     @Override
     public State getStateByCapital(long cityId) {
         State state = null;
-        String sql = "SELECT state_abbreviation, state_name FROM state WHERE capital = ?;";
+        String sql = "SELECT state_abbreviation, state_name, state nick_name FROM state WHERE capital = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, cityId);
         if (results.next()) {
             state = mapRowToState(results);
@@ -41,7 +43,7 @@ public class JdbcStateDao implements StateDao {
     @Override
     public List<State> getStates() {
         List<State> states = new ArrayList<>();
-        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT state_abbreviation, state_name FROM state;");
+        SqlRowSet results = jdbcTemplate.queryForRowSet("SELECT state_abbreviation, state_name, state_nickname FROM state;");
         while (results.next()) {
             states.add(mapRowToState(results));
         }
@@ -51,8 +53,16 @@ public class JdbcStateDao implements StateDao {
     private State mapRowToState(SqlRowSet rowSet) {
         State state = new State();
         state.setStateAbbreviation(rowSet.getString("state_abbreviation"));
-        state.setStateName(rowSet.getString("state_name"));
+
+        // COME BACK TO THIS
+        String stateName = rowSet.getString("state_name");
+        if (stateName != null); {
+            state.setStateName(rowSet.getString("state_name").toUpperCase());
+        }
+        String nick = rowSet.getString("state_nickname");
+        if (nick != null); {
+            state.setNickname(rowSet.getString("state_nickname").toUpperCase());
+        }
         return state;
     }
 }
-

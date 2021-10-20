@@ -4,6 +4,7 @@ public class State {
 
     private String stateAbbreviation;
     private String stateName;
+    private String nickname;
 
 
     public String getStateAbbreviation() {
@@ -20,5 +21,13 @@ public class State {
 
     public void setStateName(String stateName) {
         this.stateName = stateName;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
