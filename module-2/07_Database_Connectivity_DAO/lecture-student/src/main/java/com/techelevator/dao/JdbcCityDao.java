@@ -21,8 +21,8 @@ public class JdbcCityDao implements CityDao {
         City city = null;
         String sql = "SELECT city_id, city_name, state_abbreviation, population, area " +
                      "FROM city " +
-                     "WHERE city_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, cityId);
+                     "WHERE city_id = ?;"; // ?: parameter -- "Parameterized Query"
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, cityId); // need as many extra arguments as you have parameters above
         if (results.next()) {
             city = mapRowToCity(results);
         }
@@ -49,7 +49,8 @@ public class JdbcCityDao implements CityDao {
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
                 city.getCityName(), city.getStateAbbreviation(), city.getPopulation(), city.getArea());
 
-        return getCity(newId);
+        city.setCityId(newId);
+        return city;
     }
 
     @Override
