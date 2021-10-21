@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class JdbcParkDaoTests extends BaseDaoTests {
 
@@ -25,27 +26,45 @@ public class JdbcParkDaoTests extends BaseDaoTests {
 
     @Test
     public void getPark_returns_correct_park_for_id() {
-        Assert.fail();
+        Park actualPark = sut.getPark(1);   // ACT
+        assertParksMatch(PARK_1, actualPark);     // ASSERT
+
+        Park actualPark2 = sut.getPark(2);  // ACT
+        assertParksMatch(PARK_2, actualPark2);     // ASSERT
+
+        Park actualPark3 = sut.getPark(3);  // ACT
+        assertParksMatch(PARK_3, actualPark3);     // ASSERT
     }
 
     @Test
     public void getPark_returns_null_when_id_not_found() {
-        Assert.fail();
+        Park shouldBeNull = sut.getPark(-1);
+        Assert.assertNull(shouldBeNull);
     }
 
     @Test
     public void getParksByState_returns_all_parks_for_state() {
-        Assert.fail();
+        List<Park> parks = sut.getParksByState("AA");
+        Assert.assertNotNull(parks);
+        Assert.assertEquals(2, parks.size());
     }
 
     @Test
     public void getParksByState_returns_empty_list_for_abbreviation_not_in_db() {
-        Assert.fail();
+        List<Park> parks = sut.getParksByState("PA");
+        Assert.assertNotNull(parks);
+        Assert.assertEquals(0, parks.size());
     }
 
     @Test
     public void createPark_returns_park_with_id_and_expected_values() {
-        Assert.fail();
+        Park newParkObjectInJavaButNotInDatabase = new Park(-999, "Park 999", LocalDate.parse("1800-01-02"), 100, true);
+        Park newParkThatIsNowInDatabase = sut.createPark(newParkObjectInJavaButNotInDatabase);
+
+        Assert.assertNotEquals(newParkThatIsNowInDatabase.getParkId(), -999);
+
+        newParkObjectInJavaButNotInDatabase.setParkId(newParkThatIsNowInDatabase.getParkId());
+        assertParksMatch(newParkObjectInJavaButNotInDatabase, newParkThatIsNowInDatabase);
     }
 
     @Test
