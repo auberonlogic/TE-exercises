@@ -34,8 +34,6 @@ public class JdbcParkDaoTests extends BaseDaoTests {
 
         Park actualPark3 = sut.getPark(3);  // ACT
         assertParksMatch(PARK_3, actualPark3);     // ASSERT
-
-
     }
 
     @Test
