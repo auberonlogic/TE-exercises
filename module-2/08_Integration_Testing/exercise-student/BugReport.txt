@@ -29,7 +29,7 @@ true
 Actual output:
 false
 How did you fix this bug?
-Added a SET clause for billable in the SQL statement and the included it in the update in updateTimesheet
+Added a SET clause for billable in the SQL statement and then included it in the update in updateTimesheet
 
 Bug 4
 -----
