@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ConsoleService {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public ConsoleService() {
         scanner = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class ConsoleService {
         System.out.println("Welcome to Tech Elevator Hotels. Please make a selection: ");
         System.out.println("1: List Hotels");
         System.out.println("2: List Reviews");
-        System.out.println("3: Show Details for Hotel ID 1");
+        System.out.println("3: Show Details for Hotel ID 4");
         System.out.println("4: List Reviews for Hotel ID 1");
         System.out.println("5: List Hotels with star rating 3");
         System.out.println("6: Public API Query");
@@ -56,7 +56,7 @@ public class ConsoleService {
     }
 
     public void next() {
-        System.out.println("\nPress Enter to continue...");
+        System.out.println("\nPress Enter to continue . . .");
         scanner.nextLine();
     }
 
@@ -64,5 +64,4 @@ public class ConsoleService {
         scanner.close();
         System.exit(0);
     }
-
 }

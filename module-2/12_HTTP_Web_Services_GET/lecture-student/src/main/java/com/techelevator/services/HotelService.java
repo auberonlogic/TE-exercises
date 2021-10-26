@@ -17,23 +17,37 @@ public class HotelService {
     }
 
     public Hotel[] listHotels() {
-        return null;
+        Hotel[] output;
+
+        //                                                                                    Reflection --> looks into domain model and sets it up for you
+        output = restTemplate.getForObject(API_BASE_URL + "api/hotels?apikey=" + API_KEY, Hotel[].class);
+
+        return output;
     }
 
     public Review[] listReviews() {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL + "api/reviews?apikey=" + API_KEY, Review[].class);
     }
 
     public Hotel getHotelById(int id) {
-        return null;
+        String url = API_BASE_URL + "api/hotels/" + id + "?apikey=/" + API_KEY;
+        return restTemplate.getForObject(url, Hotel.class);
     }
+    // Representational State Transfer
+    // ReST
+    // REST -> data: JSON
+    // RESTful -> follows REST conventions
+
+    // Competing convention -> SOAP -> Simple Object Access Protocol -> data: XML
 
     public Review[] getReviewsByHotelId(int hotelID) {
-        return null;
+        String url = API_BASE_URL + "api/hotels/" + hotelID + "/reviews?apikey=" + API_KEY;
+        return restTemplate.getForObject(url, Review[].class);
     }
 
     public Hotel[] getHotelsByStarRating(int stars) {
-        return null;
+        String url = API_BASE_URL + "api/hotels?&stars=" + stars + "&apikey=" + API_KEY;
+        return restTemplate.getForObject(url, Hotel[].class);
     }
 
     public City getWithCustomQuery(){
