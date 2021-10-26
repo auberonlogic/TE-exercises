@@ -1,6 +1,5 @@
 package com.techelevator.auction;
 
-import com.techelevator.App;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.AfterClass;
