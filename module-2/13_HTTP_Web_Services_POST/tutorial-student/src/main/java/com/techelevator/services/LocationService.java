@@ -41,39 +41,15 @@ public class LocationService {
   
 
     public Location add(String CSV) {
-        Location location = makeLocation(CSV);
-        if(location == null) {
-            return null;
-        }
-        HttpEntity entity = makeEntity(location);
-        try {
-            location = restTemplate.postForObject(API_URL + "?apikey=" + API_KEY, entity, Location.class);
-        } catch (RestClientResponseException ex) {
-            console.printError(ex.getRawStatusCode() + " : " + ex.getStatusText());
-        }
-        return location;
+    	 return null;
     }
 
     public void delete(int id) {
-        try {
-            restTemplate.delete(API_URL + "/" + id + "?apikey=" + API_KEY);
-
-        } catch (RestClientResponseException ex) {
-            console.printError(ex.getRawStatusCode() + " : " + ex.getStatusText());
-        }
+       
     }
 
     public Location update(String CSV) {
-        Location location = makeLocation(CSV);
-        if(location == null) {
-            return null;
-        }
-        try {
-            restTemplate.put(API_URL + "/" + location.getId() + "?apikey=" + API_KEY, location);
-        } catch (RestClientResponseException ex) {
-            console.printError(ex.getRawStatusCode() + " : " + ex.getStatusText());
-        }
-        return location;
+        return null;
     }
 
     private HttpEntity<Location> makeEntity(Location location){

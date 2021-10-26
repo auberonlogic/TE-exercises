@@ -1,4 +1,4 @@
-package com.techelevator.model;
+package com.techelevator.hotels;
 
 public class Review {
     private int hotelID;
@@ -8,7 +8,18 @@ public class Review {
     private int stars;
 
     public Review() {
+    }
 
+    @Override
+    public String toString() {
+        return "\n--------------------------------------------" +
+                "\n Review Details" +
+                "\n--------------------------------------------" +
+                "\n Hotel ID: " + hotelID +
+                "\n Title:'" + title +
+                "\n Review: " + review +
+                "\n Author: " + author +
+                "\n Stars: " + stars;
     }
 
     public int getHotelID() {
@@ -49,17 +60,5 @@ public class Review {
 
     public void setStars(int stars) {
         this.stars = stars;
-    }
-
-    @Override
-    public String toString() {
-        return "\n--------------------------------------------" +
-                "\n Review Details" +
-                "\n--------------------------------------------" +
-                "\n Hotel ID: " + hotelID +
-                "\n Title:'" + title +
-                "\n Review: " + review +
-                "\n Author: " + author +
-                "\n Stars: " + stars;
     }
 }
