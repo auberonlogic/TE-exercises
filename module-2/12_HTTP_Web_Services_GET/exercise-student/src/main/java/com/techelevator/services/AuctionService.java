@@ -35,5 +35,4 @@ public class AuctionService {
         Auction[] auctions = restTemplate.getForObject(API_URL + "?currentBid_lte=" + price + "&apikey=" + API_KEY, Auction[].class);
         return auctions;
     }
-
 }

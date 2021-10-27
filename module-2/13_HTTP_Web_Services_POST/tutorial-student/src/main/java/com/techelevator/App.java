@@ -1,4 +1,4 @@
-package com.techelevator.locations;
+package com.techelevator;
 
 import com.techelevator.model.Location;
 import com.techelevator.services.ConsoleService;
@@ -6,7 +6,7 @@ import com.techelevator.services.LocationService;
 
 public class App {
 	private static final String API_URL = "https://te-pgh-api.azurewebsites.net/api/locations";
-	private static final String API_KEY = "0000";
+	private static final String API_KEY = "03017";
 
     public static void main(String[] args) {
         int menuSelection = 999;
