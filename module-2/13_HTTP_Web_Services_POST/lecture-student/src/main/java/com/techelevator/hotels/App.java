@@ -8,14 +8,14 @@ import com.techelevator.services.HotelService;
 public class App {
 
     private static final String API_BASE_URL = "https://te-pgh-api.azurewebsites.net/api/";
-    private static final String API_KEY = "0000";
+    private static final String API_KEY = "03017";
 
     public static void main(String[] args) {
         int menuSelection = 999;
         int hotelId = -1;
 
         ConsoleService consoleService = new ConsoleService();
-        HotelService hotelService = new HotelService(API_BASE_URL, API_KEY);
+        HotelService hotelService = new HotelService(API_BASE_URL, API_KEY, consoleService);
 
         while (menuSelection != 0) {
             menuSelection = consoleService.printMainMenu();
@@ -24,6 +24,8 @@ public class App {
                 Hotel[] hotels = hotelService.listHotels();
                 if( hotels != null ){
                     consoleService.printHotels(hotels);
+                } else {
+                    consoleService.printError("ERROR! TRY AGAIN LATER.");
                 }
             } else if(menuSelection == 2) {
                 // List Reservations for hotel
@@ -34,6 +36,8 @@ public class App {
                         Reservation[] reservations = hotelService.listReservationsByHotel(hotelId);
                         if( reservations != null ) {
                             consoleService.printReservations(reservations,hotelId);
+                        } else {
+                            consoleService.printError("Could not retrieve reservations...");
                         }
                     }
                 }
