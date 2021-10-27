@@ -70,18 +70,53 @@ public class AuctionService {
     }
 
     public Auction add(String auctionString) {
-        // place code here
-        return null;
+        String url = API_URL + "/?apikey=" + API_KEY;
+
+        Auction auction = makeAuction(auctionString);
+        makeEntity(auction);
+
+        try {
+            auction = restTemplate.postForObject(url, auction, Auction.class);
+        } catch	(RestClientResponseException e) {
+            // Got a response but it was 400 or 500 level
+            console.printError("Something went wrong! " + e.getRawStatusCode());
+            console.printError(e.getStatusText());
+        } catch (ResourceAccessException e) {
+            // Never got a response
+            console.printError("Server is down!");
+        }
+        return auction;
     }
 
     public Auction update(String auctionString) {
-        // place code here
-        return null;
+        Auction auction = makeAuction(auctionString);
+        String url = API_URL + "/" + auction.getId() + "?apikey=" + API_KEY;
+        HttpEntity<Auction> entity = makeEntity(auction);
+
+        try {
+            restTemplate.put(url, entity);
+        } catch	(RestClientResponseException e) {
+            // Got a response but it was 400 or 500 level
+            console.printError("Something went wrong! " + e.getRawStatusCode());
+            console.printError(e.getStatusText());
+            return null;
+        } catch (ResourceAccessException e) {
+            // Never got a response
+            console.printError("Server is down!");
+            return null;
+        }
+        return auction;
     }
 
     public boolean delete(int id) throws RestClientResponseException, ResourceAccessException {
-        // place code here
-        return false;
+        String url = API_URL + "/" + id + "?apikey=" + API_KEY;
+        try {
+            restTemplate.delete(url);
+        } catch (Exception e) {
+            System.out.println("No dice... Try again...");
+            return false;
+        }
+        return true;
     }
 
     private HttpEntity<Auction> makeEntity(Auction auction) {
