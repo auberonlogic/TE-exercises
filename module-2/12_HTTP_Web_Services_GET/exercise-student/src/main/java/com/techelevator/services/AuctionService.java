@@ -17,23 +17,22 @@ public class AuctionService {
     }
 
     public Auction[] listAllAuctions() {
-        // api code here
-        return null;
+        Auction[] auctions = restTemplate.getForObject(API_URL + "?apikey=" +  API_KEY, Auction[].class);
+        return auctions;
     }
 
     public Auction listDetailsForAuction(int id) {
-        // api code here
-        return null;
+        Auction auction = restTemplate.getForObject(API_URL + "/" + id + "?apikey=" +  API_KEY, Auction.class);
+        return auction;
     }
 
     public Auction[] findAuctionsSearchTitle(String title) {
-        // api code here
-        return null;
+        Auction[] auctions = restTemplate.getForObject(API_URL + "?title_like=" + title + "&apikey=" + API_KEY, Auction[].class);
+        return auctions;
     }
 
     public Auction[] findAuctionsSearchPrice(double price) {
-        // api code here
-        return null;
+        Auction[] auctions = restTemplate.getForObject(API_URL + "?currentBid_lte=" + price + "&apikey=" + API_KEY, Auction[].class);
+        return auctions;
     }
-
 }
