@@ -3,12 +3,9 @@ package com.techelevator.services;
 import com.techelevator.model.Hotel;
 import com.techelevator.model.Reservation;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.http.HttpHeaders;
 
 import java.util.Random;
 
@@ -16,13 +13,12 @@ public class HotelService {
 
 	private final String API_BASE_URL;
 	private final String API_KEY;
-	private final ConsoleService console;
+	private final ConsoleService console = new ConsoleService();
 	private RestTemplate restTemplate = new RestTemplate();
 
-	public HotelService(String apiURL, String apiKey, ConsoleService cs) {
+	public HotelService(String apiURL, String apiKey) {
 		API_BASE_URL = apiURL;
 		API_KEY = apiKey;
-		console = cs;
 	}
 
 	/**
@@ -33,31 +29,7 @@ public class HotelService {
 	 */
 	public Reservation addReservation(String newReservation) {
 		// TODO: Implement method
-		// https://te-pgh-api.azurewebsites.net/api/reservations?apikey=03017
-		String url = API_BASE_URL + "reservations?apikey=" + API_KEY;
-
-		// Set up headers
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-
-		// Set up the body
-		Reservation javaObject = makeReservationObjectFromCsv(newReservation);
-		HttpEntity<Reservation> request = new HttpEntity<Reservation>(javaObject, headers);
-
-		Reservation completedReservation = null;
-
-		try {
-			completedReservation = restTemplate.postForObject(url, request, Reservation.class);
-		} catch	(RestClientResponseException e) {
-			// Got a response but it was 400 or 500 level
-			console.printError("Something went wrong! " + e.getRawStatusCode());
-			console.printError(e.getStatusText());
-		} catch (ResourceAccessException e) {
-			// Never got a response
-			console.printError("Server is down!");
-		}
-
-		return completedReservation;
+		return null;
 	}
 
 	/**
@@ -69,26 +41,7 @@ public class HotelService {
 	 */
 	public Reservation updateReservation(String CSV) {
 		// TODO: Implement method
-		Reservation updatedReservation = makeReservationObjectFromCsv(CSV);
-		// https://te-pgh-api.azurewebsites.net/api/reservations/705?apikey=03017
-		String url = API_BASE_URL + "reservations/" + updatedReservation.getId() + "?apikey=" + API_KEY;
-
-		// Headers
-		HttpHeaders h = new HttpHeaders();
-		h.setContentType(MediaType.APPLICATION_JSON);
-
-		// Request Entity (Header and Body)
-		HttpEntity<Reservation> request = new HttpEntity<>(updatedReservation, h);
-
-		try {
-			restTemplate.put(url, request);
-		} catch (RestClientResponseException e) {
-			// Response was 4xx or 5xx
-		} catch (ResourceAccessException e) {
-			// No response
-		}
-
-		return updatedReservation;
+		return null;
 	}
 
 	/**
@@ -98,13 +51,6 @@ public class HotelService {
 	 */
 	public void deleteReservation(int id) {
 		// TODO: Implement method
-		// https://te-pgh-api.azurewebsites.net/api/reservations/705?apikey=03017
-		String url = API_BASE_URL + "reservations/" + id + "?apikey=" + API_KEY;
-		try {
-			restTemplate.delete(url);
-		} catch (Exception e) {
-			System.out.println("Didn't work...");
-		}
 	}
 
 	/* DON'T MODIFY ANY METHODS BELOW */
@@ -200,7 +146,7 @@ public class HotelService {
 		return reservation;
 	}
 
-	private Reservation makeReservationObjectFromCsv(String CSV) {
+	private Reservation makeReservation(String CSV) {
 		String[] parsed = CSV.split(",");
 
 		// invalid input (
