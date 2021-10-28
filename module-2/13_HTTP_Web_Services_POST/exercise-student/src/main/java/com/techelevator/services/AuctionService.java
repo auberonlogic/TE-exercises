@@ -73,7 +73,6 @@ public class AuctionService {
         String url = API_URL + "/?apikey=" + API_KEY;
 
         Auction auction = makeAuction(auctionString);
-        makeEntity(auction);
 
         try {
             auction = restTemplate.postForObject(url, auction, Auction.class);
@@ -89,9 +88,10 @@ public class AuctionService {
     }
 
     public Auction update(String auctionString) {
+
         Auction auction = makeAuction(auctionString);
-        String url = API_URL + "/" + auction.getId() + "?apikey=" + API_KEY;
         HttpEntity<Auction> entity = makeEntity(auction);
+        String url = API_URL + "/" + auction.getId() + "?apikey=" + API_KEY;
 
         try {
             restTemplate.put(url, entity);

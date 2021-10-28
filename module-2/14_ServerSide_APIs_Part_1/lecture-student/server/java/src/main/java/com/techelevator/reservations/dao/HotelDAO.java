@@ -6,10 +6,11 @@ import java.util.List;
 
 public interface HotelDAO {
 
-    List<Hotel> list();
 
+    // Create
     void create(Hotel hotel);
 
+    // Retrieves
     Hotel get(int id);
-
+    List<Hotel> list();
 }
