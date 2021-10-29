@@ -31,7 +31,7 @@ public class ReservationController {
     }
 
     @RequestMapping(path = "/reservations", method = RequestMethod.POST)
-    public Reservation createReservation(@RequestBody Reservation newReservation) {
+        public Reservation createReservation(@RequestBody Reservation newReservation) {
         reservationDao.create(newReservation, newReservation.getHotelID());
         return newReservation;
     }
