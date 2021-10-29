@@ -40,7 +40,7 @@ public class MemoryReservationDAO implements ReservationDAO {
         }
 
         if(!hotelExists) {
-            throw new HotelNotFoundException();
+            throw new HotelNotFoundException("Hotel not found.");
         }
 
         List<Reservation> hotelReservations = new ArrayList<>();
@@ -64,7 +64,12 @@ public class MemoryReservationDAO implements ReservationDAO {
     }
 
     @Override
-    public Reservation create(Reservation reservation, int hotelID) {
+    public Reservation create(Reservation reservation, int hotelID) throws HotelNotFoundException {
+        if (hotelDAO.get(hotelID) == null) {
+            throw new HotelNotFoundException("Hotel " + hotelID + " not found.");
+        }
+
+
         reservation.setId(getMaxIdPlusOne());
         reservations.add(reservation);
         return reservation;
