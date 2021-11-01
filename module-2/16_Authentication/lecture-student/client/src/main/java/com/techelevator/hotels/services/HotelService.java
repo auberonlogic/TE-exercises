@@ -25,28 +25,19 @@ public class HotelService {
      * Create a new reservation in the hotel reservation system
      */
     public Reservation addReservation(Reservation newReservation) {
-        Reservation returnedReservation = null;
-
-        //TODO: Add implementation
-        String url = API_BASE_URL + "reservations";
-        HttpEntity<Reservation> postRequest = makeReservationEntity(newReservation);
-
         try {
-//            returnedReservation = restTemplate.postForObject(url, postRequest, Reservation.class);
-            ResponseEntity<Reservation> entireHTTPResponse = restTemplate.exchange(url, HttpMethod.POST, postRequest, );
+            ResponseEntity<Reservation> response = restTemplate.exchange(API_BASE_URL + "reservations",
+                    HttpMethod.POST,
+                    makeReservationEntity(newReservation),
+                    Reservation.class);
 
-        } catch (RestClientResponseException e) {
-            System.out.println("ERROR! " + e.getRawStatusCode() + ": " + e.getStatusText());
-        } catch (ResourceAccessException e) {
-            System.out.println("Internet is down!");
+            return response.getBody();
+        } catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
         }
-
-
-
-
         BasicLogger.log("HotelService.addReservation() has not been implemented");
 
-        return returnedReservation;
+        return null;
     }
 
     /**
