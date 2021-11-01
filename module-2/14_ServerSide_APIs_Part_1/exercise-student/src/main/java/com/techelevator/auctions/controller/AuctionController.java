@@ -19,7 +19,8 @@ public class AuctionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Auction> list(@RequestParam(required = false, defaultValue = "") String title_like, @RequestParam(required = false, defaultValue = "0") double currentBid_lte) {
+    public List<Auction> list(@RequestParam(required = false, defaultValue = "") String title_like,
+                              @RequestParam(required = false, defaultValue = "0") double currentBid_lte) {
 
         if (!title_like.equals("") && currentBid_lte > 0) {
             return dao.searchByTitleAndPrice(title_like, currentBid_lte);
