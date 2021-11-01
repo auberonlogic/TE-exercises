@@ -12,24 +12,16 @@ public class AuthenticationService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String login(String username, String password) {
-        // create java object to become serialized into JSON body data
         CredentialsDto credentialsDto = new CredentialsDto();
         credentialsDto.setUsername(username);
         credentialsDto.setPassword(password);
-
-        // Create the headers for POST /login
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-
-        // Create the HTTP request Entity
         HttpEntity<CredentialsDto> entity = new HttpEntity<>(credentialsDto, headers);
-
         String token = null;
         try {
-//            ResponseEntity<TokenDto> response = restTemplate.exchange(API_BASE_URL + "login", HttpMethod.POST, entity, TokenDto.class);
-//            TokenDto body = response.getBody();
-
-            TokenDto body = restTemplate.postForObject(API_BASE_URL + "login", entity, TokenDto.class);
+            ResponseEntity<TokenDto> response = restTemplate.exchange(API_BASE_URL + "login", HttpMethod.POST, entity, TokenDto.class);
+            TokenDto body = response.getBody();
             if (body != null) {
                 token = body.getToken();
             }

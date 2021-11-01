@@ -8,8 +8,6 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.http.HttpResponse;
-
 public class HotelService {
 
     private static final String API_BASE_URL = "http://localhost:8080/";
@@ -25,19 +23,12 @@ public class HotelService {
      * Create a new reservation in the hotel reservation system
      */
     public Reservation addReservation(Reservation newReservation) {
-        try {
-            ResponseEntity<Reservation> response = restTemplate.exchange(API_BASE_URL + "reservations",
-                    HttpMethod.POST,
-                    makeReservationEntity(newReservation),
-                    Reservation.class);
+        Reservation returnedReservation = null;
 
-            return response.getBody();
-        } catch (RestClientResponseException | ResourceAccessException e) {
-            BasicLogger.log(e.getMessage());
-        }
+        //TODO: Add implementation
         BasicLogger.log("HotelService.addReservation() has not been implemented");
 
-        return null;
+        return returnedReservation;
     }
 
     /**
@@ -139,7 +130,7 @@ public class HotelService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(authToken);
-        return new HttpEntity<Reservation>(reservation, headers);
+        return new HttpEntity<>(reservation, headers);
     }
 
     /**
