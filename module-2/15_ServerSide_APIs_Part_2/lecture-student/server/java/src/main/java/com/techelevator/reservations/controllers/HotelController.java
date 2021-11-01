@@ -85,7 +85,7 @@ public class HotelController {
      */
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/hotels/{id}/reservations", method = RequestMethod.POST)
-    public Reservation addReservation(@RequestBody Reservation reservation, @PathVariable("id") int hotelID)
+    public Reservation addReservation(@Valid @RequestBody Reservation reservation, @PathVariable("id") int hotelID)
             throws HotelNotFoundException {
         return reservationDAO.create(reservation, hotelID);
     }
@@ -120,6 +120,17 @@ public class HotelController {
         }
 
         return filteredHotels;
+    }
+
+    @RequestMapping(path = "/reservations/{id}", method = RequestMethod.PUT)
+    public Reservation updateReservation(@Valid @RequestBody Reservation r, @PathVariable ("id") int reservationId) throws ReservationNotFoundException {
+        return reservationDAO.update(r, reservationId);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/reservations/{id}", method = RequestMethod.DELETE)
+    public void deleteReservation(@PathVariable("id") int reservationToAxe) throws ReservationNotFoundException {
+        reservationDAO.delete(reservationToAxe);
     }
 
 }
