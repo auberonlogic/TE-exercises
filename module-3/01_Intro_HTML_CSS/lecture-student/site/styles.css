@@ -1,0 +1,37 @@
+/* 
+
+CSS: Cascading Style Sheets, v3
+
+-- Series of Rules
+
+    - One rule:
+
+        selector {
+            key: value;
+            key2: value2:
+            key3: value3;
+            keytruda: billboards EVERYWHERE;
+        }
+
+*/
+
+img {
+    height: 200px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    /*  RRGGBB
+    1 byte per color
+    1 byte = 8 bits: 0 to 255
+    use hexadecimal: 0-15, 16^2 - 1: 256 - 1 = 255
+    00 to FF
+    0  to 255
+    */
+    color: red;
+}
+
