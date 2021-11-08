@@ -66,5 +66,4 @@ public class AuctionController {
     public String whoAmI(Principal principal) {
         return principal.getName();
     }
-
 }
