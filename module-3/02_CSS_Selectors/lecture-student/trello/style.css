@@ -1,0 +1,22 @@
+div.trello-list {
+    display: inline-block;
+    width: 300px;
+    background-color: #dddddd;
+    border-radius: 2px 3px;
+    border: 3px dotted blue;
+
+    margin: 100px;
+    margin: 100px 50px;
+    margin: 10px 10px 10px 10px;
+}
+
+div.trello-list li:hover {
+    background-color: #f5f6f7;
+    color: #092d42;
+}
+
+div.trello-list > h2 {
+    margin: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+}
