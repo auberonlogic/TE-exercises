@@ -7,53 +7,48 @@
     <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
-    <form method="GET" action="api/infomation" >
-        
-        <h2>Info Form</h2>
+    <h2>Info Form</h2>
 
-        <form method="POST" action="/api/reservations">
+    <form method="POST" action="/api/info">
+        <p>
+            <label for="name">Name: </label>
+            <input type="text" name="name" placeholder="Your name here" required/>
+        </p>
 
-            <p>
-                <label for="name">Name: </label>
-                <input type="text" name="name" placeholder="Your name here" required/>
-            </p>
+        <p>
+            <label for="email">Email: </label>
+            <input type="email" name="email" required/>
+        </p>
 
-            <p>
-                <label for="email">Email: </label>
-                <input type="email" name="email" required/>
-            </p>
+        <p>
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" name="dateOfBirth"/>
+        </p>
 
-            <p>
-                <label for="dateOfBirth">Date of Birth</label>
-                <input type="date" name="dateOfBirth"/>
-            </p>
+        <p>
+            <label for="faveColor">Favorite Color: </label>
+            <input type="color" name="faveColor"/>
+        </p>
 
-            <p>
-                <label for="faveColor">Favorite Color: </label>
-                <input type="color" name="faveColor"/>
-            </p>
+        <p>
+            <label for="faveNum">Favorite Number</label>
+            <input type="number" name="faveNum"/>
+        </p>
 
-            <p>
-                <label for="faveNum">Favorite Number</label>
-                <input type="number" name="faveNum"/>
-            </p>
+        <br><p>Is all the information correct?</p>
+        <p>
+            <label>
+            <input type="radio" name="one" value="correct"/> yes
+            </label>
 
-            <p>
-                <label>
-                <input type="radio" name="one" value="correct"/> Info is correct
-                </label>
+        </p>
+        <p>
+            <label>
+                <input type="radio" name="one" value="incorrect"/> no
+            </label><br><br>
+        </p>
 
-            </p>
-            
-            <p>
-                <label>
-                    <input type="radio" name="one" value="incorrect"/> Info is incorrect
-                </label><br><br>
-            </p>
-
-            <p><input type="submit" /></p>
-            
-        </form>
+        <p><input type="submit" /></p>
     </form>
 </body>
 </html>
