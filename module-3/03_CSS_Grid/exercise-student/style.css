@@ -101,9 +101,10 @@ header img {
 }
 
 #student-contact {
-    grid-area: contact;
+    display: flex;
     align-items: center;
-
+    grid-area: contact;
+    justify-content: center;
     text-align: center;
 }
 
@@ -160,6 +161,7 @@ header img {
         display: grid;
         row-gap: 20px;
         column-gap: 35px;
+        gap: 20px 35px;
         grid-template-columns:
             1fr;
         grid-template-areas:
