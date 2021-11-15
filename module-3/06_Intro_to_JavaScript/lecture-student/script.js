@@ -9,20 +9,32 @@
  * They don't have a return type and the naming convention is camel-case.
  */
 function variables() {
+  console.log("Hello World");
+  console.log("Welcome to Java Blue");
+  return "hey there";
+
+  /* VARIABLE DECLARATION --> DON'T USE THIS! YOU'LL SEE IT, BUT ONLY IN OLD CODE.*/
+  var x = 5; 
+  
   // Declares a variable where the value cannot be changed
+  const y = 6
+
   // Declares a variable those value can be changed
+  let z = 10;
+
   // Declares a variable that will always be an array
+  const arr = []; /* declares new empty array */
 }
 
-/**
+/** commented out --> JSDoc
  * Functions can also accept parameters.
  * Notice the parameters do not have types.
- * @param {Number} param1 The first number to display
- * @param {Number} param2 The second number to display
+ * @param {Number} inputA The first number to display
+ * @param {Number} inputB The second number to display
  */
-function printParameters(param1, param2) {
-  console.log(`The value of param1 is ${param1}`);
-  console.log(`The value of param2 is ${param2}`);
+function printParameters(inputA, inputB) {
+  console.log("The value of param1 is " + inputA); /* concatenation */
+  console.log(`The value of param2 is ${inputB}`); /* interpolation */
 }
 
 /**
@@ -61,7 +73,8 @@ function falsy(x) {
     - or they can be functions
 */
 function objects() {
-  const person = {
+  const person = 
+  {
     firstName: "Bill",
     lastName: "Lumbergh",
     age: 42,
@@ -74,10 +87,21 @@ function objects() {
   };
 
   // Log the object
+  console.log(person);
+  console.table(person);
 
   // Log the first and last name
+  console.log(person.firstName);
+  console.log(person.lastName);
+  console.log(`${person.lastName}, ${person.firstName}`)
 
   // Log each employee
+  for(let i = 0; i < person.employees.length; i++) {
+    console.log(person.employees[i]);
+  }
+
+
+
 }
 
 /*
@@ -90,11 +114,13 @@ function with the same name, more than one time in a script file, the
 earlier ones are overriden and the most recent one will be used.
 */
 
+// No overloading, no overriding, only overwriting
+
 function Add(num1, num2) {
   return num1 + num2;
 }
 
-function Add(num1, num2, num3) {
+function Add(num1 = 0, num2 = 0, num3 = 0) {
   return num1 + num2 + num3;
 }
 
@@ -138,4 +164,21 @@ function stringFunctions(value) {
         - trim()
         - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
     */
+}
+
+
+function variableNumberOfParameters1() {
+  console.log(arguments);
+}
+
+function variableNumberOfParameters2(...varArgs) {
+  console.log(varArgs);
+}
+
+function addEmALl(...addThese) {
+  let sum = 0;
+  for(let i = 0; i < addThese.length; i++) {
+    sum += addThese[i];
+  }
+  return sum;
 }
