@@ -85,18 +85,17 @@ function titleCase(title, minorWords) {
 
     // assemble output string
     for (let i = 0; i < titleArray.length; i++) {
-        word = titleArray[i];
+        let word = titleArray[i];
+        let capWord = word.charAt(0).toUpperCase() + word.substring(1);
+        
         if (i == 0) {
-            insertion = word.charAt(0).toUpperCase() + word.substring(1);
-            output += insertion;
+            output += capWord;
             console.log(output);
-        } else if (minorWordsArray.includes(word)) {
-            insertion = word;
-            output += " " + insertion;
+        } else if (!minorWordsArray.includes(word)) {
+            output += " " + capWord;
             console.log(output);
         } else {
-            insertion = word.charAt(0).toUpperCase() + word.substring(1);
-            output += " " + insertion;
+            output += " " + word;
             console.log(output);
         }
     }
