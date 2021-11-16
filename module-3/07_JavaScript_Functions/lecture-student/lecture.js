@@ -10,7 +10,7 @@ function returnOne() {
 
 /**
  * Functions can also take parameters. These are just variables that are filled
- * in by whoever is calling the function.
+ * in by whomever is calling the function.
  *
  * Also, we don't *have* to return anything from the actual function.
  *
@@ -28,6 +28,11 @@ function printToConsole(value) {
  * @param {number} secondParameter the second parameter to multiply
  */
 
+  function multiplyTogether(firstParameter, secondParameter) {
+    return firstParameter * secondParameter;
+  }
+
+
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -39,6 +44,9 @@ function printToConsole(value) {
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
 
+function multiplyNoUndefined(firstParameter = 0, secondParameter = 0) {
+  return firstParameter * secondParameter;
+}
 
  
 /**
@@ -88,9 +96,50 @@ function scopeTest() {
 }
 
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
-  let description = `${name} is currently ${age} years old. Their quirks are: `;
+  const description = `${name} is currently ${age} years old. Their quirks are: `; // String interpolation
   return description + listOfQuirks.join(separator);
 }
+
+
+// variable arguments
+//  1. special variable arguments
+//  2. spread syntax "..."
+function showArgs() {
+  const argsArray = Array.from(arguments);
+  console.log("Array: ");
+  console.log(argsArray);
+  console.log("Arguments object: ");
+  console.log(arguments);
+}
+
+// named function  -->  has a name
+function showArgs2(...arrrgs) {
+  console.log(arrrgs);
+}
+
+// spread syntax works in java too
+/* public class Git {
+  public static void main(String... args) {
+
+  }
+}
+*/
+
+// Anonymous functions  -->  has no name
+// fat arrow  (java has this too)
+// (param1) => { console.log(param1); }
+
+function forEachExample() {
+  const instructors = ["Tom", "Tom", "Walt"];
+  const loudInstructors = instructors.map(capitalize);
+  console.log(instructors);
+  console.log(loudInstructors);
+}
+
+function capitalize(name) {
+  return name.toUpperCase();
+}
+
 
 /**
  * Takes an array and, using the power of anonymous functions, generates
@@ -100,7 +149,17 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  // [1, 2, 3]
+  //  ^                            0              1
+  //     ^                         1              2
+  //        ^                      3              3
+  //                  6
+  let counter = 1;
+  return numbersToSum.reduce((accumulator, currentElement) => { // accumulator also known as reducer
+    console.log(`Accumulator: ${accumulator} \ncurrentElement: ${currentElement}`);
+    
+    return accumulator + currentElement; // finally returns 6
+  });
 }
 
 /**
@@ -111,4 +170,16 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter(n => n % 3 === 0);
+}
+
+/*
+function isMultOfThree(num) {
+  if (num % 3 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+*/
