@@ -12,6 +12,44 @@
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
 
+function iqTest(string) {
+    const evenArray = [];
+    const oddArray = [];
+    const initArray = string.split(" ");
+
+    if (string == "") {
+        return 0;
+    }
+
+    for (let i = 0; i < initArray.length; i++) {
+        if (initArray[i] % 2 == 0) {
+            evenArray.push(initArray[i]);
+        } else {
+            oddArray.push(initArray[i]);
+        }
+    }
+
+    if (evenArray.length == 0 || oddArray.length == 0) {
+        return 0;
+    }
+    
+    if (oddArray.length == 1) {
+        for (let j = 0; j < initArray.length; j++) {
+            if (initArray[j] % 2 != 0) {
+                return j + 1;
+            }
+        }
+    }
+
+    if (evenArray.length == 1) {
+        for (let k = 0; k < initArray.length; k++) {
+            if (initArray[k] % 2 == 0) {
+                return k + 1;
+            }
+        }
+    }
+}
+
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 
     list of exceptions (minor words). The list of minor words will be given as a string with each 
@@ -28,3 +66,39 @@ argument is unused.
 		titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
+
+function titleCase(title, minorWords) {
+    // prep title
+    titleLowerCase = title.toLowerCase();
+    titleArray = titleLowerCase.split(" ");
+    console.log(titleArray);
+
+    // prep minorWords
+    if (minorWords != undefined) {
+        minorWordsLowerCase = minorWords.toLowerCase();
+        minorWordsArray = minorWordsLowerCase.split(" ");
+        console.log(minorWordsArray);
+    }
+    
+    // prep output string
+    let output = "";
+
+    // assemble output string
+    for (let i = 0; i < titleArray.length; i++) {
+        word = titleArray[i];
+        if (i == 0) {
+            insertion = word.charAt(0).toUpperCase() + word.substring(1);
+            output += insertion;
+            console.log(output);
+        } else if (minorWordsArray.includes(word)) {
+            insertion = word;
+            output += " " + insertion;
+            console.log(output);
+        } else {
+            insertion = word.charAt(0).toUpperCase() + word.substring(1);
+            output += " " + insertion;
+            console.log(output);
+        }
+    }
+    return output;
+}
