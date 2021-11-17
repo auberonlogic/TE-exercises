@@ -115,9 +115,8 @@ function makeNumber(first, second = '') {
 
  function getFullAddressesOfProperties(input) {
 
-    return input.map( (x) => {
-        return `${x.streetNumber} ${x.streetName} ${x.streetType} ${x.city} ${x.state} ${x.zip}`
-    });
+    return input.map( (x) => `${x.streetNumber} ${x.streetName} ${x.streetType} ${x.city} ${x.state} ${x.zip}`
+    );
  }
 
 /*
