@@ -154,7 +154,11 @@ function sumAllNumbers(numbersToSum) {
   //     ^                         1              2
   //        ^                      3              3
   //                  6
-  let counter = 1;
+  
+  // without the seed...
+  // [1, 2, 3]
+  //     ^         with no seed, the first element of the array defaults to being the accumulator
+  //        ^
   return numbersToSum.reduce((accumulator, currentElement) => { // accumulator also known as reducer
     console.log(`Accumulator: ${accumulator} \ncurrentElement: ${currentElement}`);
     
