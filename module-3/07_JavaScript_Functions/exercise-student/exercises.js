@@ -21,7 +21,7 @@
  */
 
 function isAdmitted(gpa, satScore = 0, recommendation = false) {
-    return ((gpa > 4.0 || satScore > 1300) || (gpa > 3.0 && recommendation) || (satScore > 1200 && recommendation));
+    return ((gpa > 4.0) || (satScore > 1300) || (gpa > 3.0 && recommendation) || (satScore > 1200 && recommendation));
 }
 
 /**
@@ -64,8 +64,8 @@ function makeNumber(first, second = '') {
 
  function addAll(...num) {
     if (num != 0) {
-        return num.reduce((reducer, currentElement) => {
-            return reducer + currentElement;
+        return num.reduce((reducer, element) => {
+            return reducer + element;
         });
     } else {
         return 0;
@@ -86,11 +86,9 @@ function makeNumber(first, second = '') {
  */
 
  function makeHappy(array) {
-     return array.map(happy);
- }
-
- function happy(word) {
-     return 'Happy ' + word;
+     return array.map( (word) => {
+         return 'Happy ' + word;
+     });
  }
 
 /*
