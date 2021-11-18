@@ -37,52 +37,5 @@ function displayGroceries() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setPageTitle();
-  displayGroceries();
-  const items = document.querySelectorAll('li');
-
-  items.forEach( (item) => {
-
-    // MARK ITEM COMPLETE
-    item.addEventListener('click', () => {
-      groceries.forEach( (element) => {
-        if(element.name == item.innerText && !item.classList.contains('completed')) {
-          item.classList.add('completed');
-          element.completed = true;
-        }
-      });
-    });
-
-    // MARK ITEM INCOMPLETE
-    item.addEventListener('dblclick', () => {
-      groceries.forEach( (element) => {
-        if(element.name == item.innerText && item.classList.contains('completed')) {
-          item.classList.remove('completed')
-          element.completed = false;
-        }
-      });
-    });
-  });
-
-  // TOGGLE ALL
-    const button = document.getElementById('toggleAll');
-    button.addEventListener('click', () => {
-      if(allItemsIncomplete) {
-        items.forEach( (item) => {
-          item.classList.add('completed');
-        });
-        button.innerText = 'Mark All Incomplete';
-        allItemsIncomplete = false;
-      } else {
-        items.forEach( (item) => {
-          item.classList.remove('completed');
-        });
-        button.innerText = 'Mark All Complete';
-        allItemsIncomplete = true;
-      }
-    });
-
-});
-
-
+setPageTitle();
+displayGroceries();
