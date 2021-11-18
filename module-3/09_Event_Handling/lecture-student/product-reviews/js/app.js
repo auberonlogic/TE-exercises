@@ -1,4 +1,4 @@
-const productName = 'Cigar Parties for Dummies';
+const name = 'Cigar Parties for Dummies';
 let description = 'Host and plan the perfect cigar party for all of your squirrelly friends.';
 let reviews = [
   {
@@ -15,7 +15,7 @@ let reviews = [
  */
 function setPageTitle() {
   const pageTitle = document.getElementById('page-title');
-  pageTitle.querySelector('.name').innerText = productName;
+  pageTitle.querySelector('.name').innerText = name;
 }
 
 /**
@@ -59,46 +59,12 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
-document.addEventListener("DOMContentLoaded", () => {
-
 // Set the product reviews page title.
 setPageTitle();
 // Set the product reviews page description.
 setPageDescription();
 // Display all of the product reviews on our page.
 displayReviews();
-
-// Step 1: find the element you want
-const descriptionBox = document.querySelector("p.description");
-// Step 2: add event listener ... Step 3: define function to handle event
-descriptionBox.addEventListener('click', (event) => {
-  toggleDescriptionEdit(event.target);
-});
-
-const inputBox = document.querySelector("#inputDesc");
-inputBox.addEventListener('mouseleave', (event) => {
-  exitDescriptionEdit(event.target, true);
-
-});
-
-inputBox.addEventListener('keypress', (event) => {
-  if(event.keyCode === 92) {
-    exitDescriptionEdit(event.target, false);
-  }
-});
-
-
-
-const btnToggleForm = document.getElementById('btnToggleForm');
-btnToggleForm.addEventListener('click', showHideForm);
-
-const btnSaveReview = document.getElementById('btnSaveReview');
-btnSaveReview.addEventListener('click', (event) => {
-  event.preventDefault();
-  saveReview();
-});
-
-});
 
 /**
  * Hide the description and show the text box.
@@ -164,19 +130,4 @@ function resetFormValues() {
 /**
  * Save the review that was added using the add review form.
  */
-function saveReview() {
-  const reviewer = document.getElementById('name').value;
-  const title = document.getElementById('title').value;
-  const review = document.querySelector('textarea').value;
-  const stars = document.getElementById('rating').value;
-  
-  const newReview = {
-    reviewer: reviewer,
-    title: title,
-    review: review,
-    rating: stars
-  };
-
-  reviews.push(newReview);
-  displayReview(newReview);
-}
+function saveReview() {}
