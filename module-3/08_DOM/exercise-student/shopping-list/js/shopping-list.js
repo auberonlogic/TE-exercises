@@ -7,8 +7,7 @@ let groceries = ["Hey", "Zack", "do", "you", "have", "to", "read", "all", "of", 
  * of the pageTitle variable that was set above.
  */
 function setPageTitle() {
-  const title = document.getElementById("title");
-  title.innerText = pageTitle;
+  const title = document.getElementById("title").innerText = pageTitle;
 }
 
 /**
