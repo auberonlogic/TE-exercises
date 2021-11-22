@@ -27,12 +27,12 @@ function displayGroceries() {
  * to every list item and add the class completed to each one
  */
 function markCompleted() {
-  let allListItems = document.querySelectorAll("div.shopping-list > ul#groceries > li"); 
-  for (let i = 0; i < allListItems.length; i++) {
-    allListItems[i].classList.add("completed");
-    console.log(allListItems[i]);
-  }
-
+  let allListItems = document.querySelectorAll("div.shopping-list > ul#groceries > li");
+  
+  allListItems.forEach( (listItem) => {
+    listItem.classList.add("completed");
+    console.log(listItem);
+  });
 }
 
 setPageTitle();
