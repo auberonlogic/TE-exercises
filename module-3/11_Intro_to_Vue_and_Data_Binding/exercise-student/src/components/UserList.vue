@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter"/></td>
-        <td><input type="text" id="lastNameFilter"/></td>
-        <td><input type="text" id="usernameFilter"/></td>
-        <td><input type="text" id="emailFilter"/></td>
+        <td><input type="text" id="firstNameFilter" v-model="filter.firstName"/></td>
+        <td><input type="text" id="lastNameFilter" v-model="filter.lastName" /></td>
+        <td><input type="text" id="usernameFilter" v-model="filter.username" /></td>
+        <td><input type="text" id="emailFilter" v-model="filter.emailAddress" /></td>
         <td>
-          <select id="statusFilter">
+          <select id="statusFilter" v-model="filter.status" >
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Disabled">Disabled</option>
@@ -24,6 +24,13 @@
         </td>
       </tr>
       <!-- user listing goes here -->
+      <tr class="users" v-bind:class="{ disabled : u.status == 'Disabled' }" v-for="u in filteredList" v-bind:key="u">
+        <td> {{ u.firstName }} </td>
+        <td> {{ u.lastName }} </td>
+        <td> {{ u.username }} </td>
+        <td> {{ u.emailAddress }} </td>
+        <td> {{ u.status }} </td>
+      </tr>
     </tbody>
   </table>
 </template>
@@ -40,9 +47,25 @@ export default {
         { firstName: 'Ben', lastName: 'Carter', username: 'bcarter', emailAddress: 'bcarter@gmail.com', status: 'Active' },
         { firstName: 'Katie', lastName: 'Jackson', username: 'kjackson', emailAddress: 'kjackson@yahoo.com', status: 'Active' },
         { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Disabled' }
-      ]
+      ],
+      filter: { firstName: "", lastName: "", username: "", emailAddress: "", status: "" }
+    }
+    
+  },
+  computed: {
+    filteredList() {
+      let newList = this.users.filter( (user) => 
+          user.firstName.toLowerCase().includes(this.filter.firstName.toLowerCase()) &&
+          user.lastName.toLowerCase().includes(this.filter.lastName.toLowerCase()) &&
+          user.username.toLowerCase().includes(this.filter.username.toLowerCase()) &&
+          user.emailAddress.toLowerCase().includes(this.filter.emailAddress.toLowerCase()) &&
+          user.status.toLowerCase().includes(this.filter.status.toLowerCase())
+      
+      )
+      return newList;
     }
   }
+  
 }
 </script>
 

@@ -48,9 +48,6 @@
             <p> {{ r.review }} </p>
             <p>favorite? <input type="checkbox" v-model="r.favorited" /></p>
         </div>
-
-        
-
     </div>
 </template>
 
