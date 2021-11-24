@@ -52,38 +52,39 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button class="btnEnableDisable" v-on:click.prevent="flipStatus(user.id)" v-if="user.status === 'Active'">Disable</button>
+            <button class="btnEnableDisable" v-on:click.prevent="flipStatus(user.id)" v-else>Enable</button>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+    <div class="all-actions" >
+      <button :disabled="isDisabled">Enable Users</button>
+      <button :disabled="isDisabled">Disable Users</button>
+      <button :disabled="isDisabled">Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click.prevent="showForm === true ? showForm = false : showForm = true">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-show="showForm === true">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input type="text" name="firstName" v-model="newUser.firstName" />
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input type="text" name="lastName" v-model="newUser.lastName" />
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" v-model="newUser.username" />
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input type="text" name="emailAddress" v-model="newUser.emailAddress" />
       </div>
-      <button type="submit" class="btn save">Save User</button>
+      <button type="submit" class="btn save" v-on:click.prevent="saveUser">Save User</button>
     </form>
   </div>
 </template>
@@ -91,8 +92,12 @@
 <script>
 export default {
   name: "user-list",
+  
   data() {
     return {
+      isDisabled: true,
+      selectedUserIDs: {},
+      showForm: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -160,7 +165,35 @@ export default {
       ]
     };
   },
-  methods: {},
+  methods: {
+    saveUser() {
+      this.users.unshift(this.newUser);
+      this.resetForm();
+    },
+    resetForm() {
+      this.newUser =
+      {
+        id: null,
+        firstName: "",
+        lastName: "",
+        username: "",
+        emailAddress: "",
+        status: "Active"
+      }
+    },
+    flipStatus(id) {
+      this.users.forEach( (user) => {
+        if (user.id === id) {
+          if (user.status === "Active") {
+            user.status = "Disabled";
+          } else {
+            user.status = "Active"
+          }
+        }
+      });
+
+    }
+  },
   computed: {
     filteredList() {
       let filteredUsers = this.users;

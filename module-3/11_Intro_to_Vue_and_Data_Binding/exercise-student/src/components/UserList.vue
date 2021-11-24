@@ -54,14 +54,14 @@ export default {
   },
   computed: {
     filteredList() {
-      let newList = this.users.filter( (user) => 
+      let filteredList = this.users.filter( (user) => 
           user.firstName.toLowerCase().includes(this.filter.firstName.toLowerCase()) &&
           user.lastName.toLowerCase().includes(this.filter.lastName.toLowerCase()) &&
           user.username.toLowerCase().includes(this.filter.username.toLowerCase()) &&
           user.emailAddress.toLowerCase().includes(this.filter.emailAddress.toLowerCase()) &&
           user.status.toLowerCase().includes(this.filter.status.toLowerCase())
       )
-      return newList;
+      return filteredList;
     }
   }
   
