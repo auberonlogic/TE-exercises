@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter" v-model="filter.firstName"/></td>
+        <td><input type="text" id="firstNameFilter" v-model="filter.firstName" /></td>
         <td><input type="text" id="lastNameFilter" v-model="filter.lastName" /></td>
         <td><input type="text" id="usernameFilter" v-model="filter.username" /></td>
         <td><input type="text" id="emailFilter" v-model="filter.emailAddress" /></td>
@@ -60,7 +60,6 @@ export default {
           user.username.toLowerCase().includes(this.filter.username.toLowerCase()) &&
           user.emailAddress.toLowerCase().includes(this.filter.emailAddress.toLowerCase()) &&
           user.status.toLowerCase().includes(this.filter.status.toLowerCase())
-      
       )
       return newList;
     }
