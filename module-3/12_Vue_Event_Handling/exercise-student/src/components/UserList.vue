@@ -15,7 +15,8 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <!-- ADDED checkboxWorking click event method call to debug -->
+            <input type="checkbox" id="selectAll" @click="checkAll" :checked="users.length === selectedUserIDs.length && users.length > 0" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +45,8 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <!-- ADDED checkboxWorking click event method call to debug -->
+            <input type="checkbox" @click="toggleSelectedUser(user.id)" v-bind:id="user.id" v-bind:value="user.id" :checked="selectedUserIDs.includes(user.id)" />
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -60,9 +62,9 @@
     </table>
 
     <div class="all-actions" >
-      <button :disabled="isDisabled">Enable Users</button>
-      <button :disabled="isDisabled">Disable Users</button>
-      <button :disabled="isDisabled">Delete Users</button>
+      <button :disabled="actionButtonDisabled" @click="enableSelectedUsers" >Enable Users</button>
+      <button :disabled="actionButtonDisabled" @click="disableSelectedUsers" >Disable Users</button>
+      <button :disabled="actionButtonDisabled" @click="deleteSelectedUsers" >Delete Users</button>
     </div>
 
     <button v-on:click.prevent="showForm === true ? showForm = false : showForm = true">Add New User</button>
@@ -95,8 +97,7 @@ export default {
   
   data() {
     return {
-      isDisabled: true,
-      selectedUserIDs: {},
+      selectedUserIDs: [],
       showForm: false,
       filter: {
         firstName: "",
@@ -162,7 +163,7 @@ export default {
           emailAddress: "msmith@foo.com",
           status: "Disabled"
         }
-      ]
+      ],
     };
   },
   methods: {
@@ -191,10 +192,99 @@ export default {
           }
         }
       });
+    },
 
+    toggleSelectedUser(id) {
+      if (this.selectedUserIDs.includes(id)) {
+        let index = this.selectedUserIDs.indexOf(id);
+        if (index > -1) {
+          this.selectedUserIDs.splice(index, 1);
+        }
+        console.log(JSON.stringify(this.selectedUserIDs))
+      } else {
+        console.log('checkbox working');
+        this.selectedUserIDs.unshift(id);
+        console.log(JSON.stringify(this.selectedUserIDs))
+      }
+      
+    },
+
+    enableSelectedUsers() {
+      this.users.forEach( (user) => {
+        if (this.selectedUserIDs.includes(user.id)) {
+          user.status = "Active";
+          
+        }
+      });
+      this.selectedUserIDs = [];
+    },
+
+    disableSelectedUsers() {
+      this.users.forEach( (user) => {
+        if (this.selectedUserIDs.includes(user.id)) {
+          user.status = "Disabled";
+        }
+      });
+      this.selectedUserIDs = [];
+    },
+
+
+    deleteSelectedUsers() {
+      this.selectedUserIDs.forEach( (id) => {
+        this.users.forEach( (user) => {
+          if (user.id === id) {
+            let index = this.users.indexOf(user);
+            if (index > -1) {
+              this.users.splice(index, 1);
+            }
+          }
+        });
+      });
+      this.selectedUserIDs = [];
+    },
+
+    checkAll() {
+      if(this.users.length !== this.selectedUserIDs.length) {
+
+      
+        this.users.forEach( (user) => {
+          if(!this.selectedUserIDs.includes(user.id)) {
+            this.selectedUserIDs.unshift(user.id);
+          }
+        });
+      } else {
+        this.selectedUserIDs = [];
+      }
     }
+
+
+/*
+    deleteSelectedUsers() {
+      this.users.forEach( (user) => {
+        if (this.selectedUserIDs.includes(user.id)) {
+          let index = this.users.indexOf(user);
+          if (index > -1) {
+            this.users.splice(index, 1);
+          }
+        }
+      });
+      this.selectedUserIDs = [];
+    }
+*/
+    
+    
+
   },
   computed: {
+    actionButtonDisabled() {
+      if (Object.keys(this.selectedUserIDs).length === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
