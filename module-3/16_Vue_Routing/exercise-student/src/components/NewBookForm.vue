@@ -29,6 +29,7 @@ export default {
                 read: false,
                 isbn: ''
             };
+            this.$router.push( { name: 'myBooks', params: { id: this.$route.params.id } } );
         }
     }
 }
