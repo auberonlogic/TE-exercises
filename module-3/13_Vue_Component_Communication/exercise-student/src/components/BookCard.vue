@@ -1,16 +1,28 @@
 <template>
-  <div class="card">
+  <div class="card" >
 
-    <!-- Please leave <img> commented out until directed to remove open and close comment tags in the README.
+    
+    <h2 class="book-title">{{book.title}}</h2>
+   
     <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
-    -->
+    
+    <h3 class="book-author">{{book.author}}</h3>
+
+    <button class="mark-read" @click.prevent="toggleReadStatus(book)" v-if="book.read">Mark Unread</button>
+    <button class="mark-unread" @click.prevent="toggleReadStatus(book)" v-else>Mark Read</button>
     
   </div>
 </template>
 
 <script>
 export default {
-    name: 'book-card'
+    name: 'book-card',
+    props: ['book'],
+    methods: {
+        toggleReadStatus(book) {
+            this.$store.commit('TOGGLE_READ_STATUS', book)
+        }
+    }
 }
 </script>
 
