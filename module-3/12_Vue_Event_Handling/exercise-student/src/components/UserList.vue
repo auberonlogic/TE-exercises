@@ -188,7 +188,7 @@ export default {
           if (user.status === "Active") {
             user.status = "Disabled";
           } else {
-            user.status = "Active"
+            user.status = "Active";
           }
         }
       });
@@ -202,7 +202,6 @@ export default {
         }
         console.log(JSON.stringify(this.selectedUserIDs))
       } else {
-        console.log('checkbox working');
         this.selectedUserIDs.unshift(id);
         console.log(JSON.stringify(this.selectedUserIDs))
       }
@@ -213,7 +212,6 @@ export default {
       this.users.forEach( (user) => {
         if (this.selectedUserIDs.includes(user.id)) {
           user.status = "Active";
-          
         }
       });
       this.selectedUserIDs = [];
@@ -245,8 +243,6 @@ export default {
 
     checkAll() {
       if(this.users.length !== this.selectedUserIDs.length) {
-
-      
         this.users.forEach( (user) => {
           if(!this.selectedUserIDs.includes(user.id)) {
             this.selectedUserIDs.unshift(user.id);
@@ -256,28 +252,10 @@ export default {
         this.selectedUserIDs = [];
       }
     }
-
-
-/*
-    deleteSelectedUsers() {
-      this.users.forEach( (user) => {
-        if (this.selectedUserIDs.includes(user.id)) {
-          let index = this.users.indexOf(user);
-          if (index > -1) {
-            this.users.splice(index, 1);
-          }
-        }
-      });
-      this.selectedUserIDs = [];
-    }
-*/
-    
-    
-
   },
   computed: {
     actionButtonDisabled() {
-      if (Object.keys(this.selectedUserIDs).length === 0) {
+      if (this.selectedUserIDs.length === 0) {
         return true;
       } else {
         return false;
