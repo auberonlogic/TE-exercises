@@ -1,15 +1,15 @@
 <template>
-  <new-book-form></new-book-form>
+  <div>
+    <new-book-form />
+  </div>
 </template>
 
 <script>
-import NewBookForm from '../components/NewBookForm.vue'
+import NewBookForm from "../components/NewBookForm.vue";
 export default {
   components: { NewBookForm },
-
-}
+};
 </script>
 
 <style>
-
 </style>
