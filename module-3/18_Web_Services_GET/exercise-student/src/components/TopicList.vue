@@ -1,5 +1,7 @@
 <template>
-  <div class="topic-list">
+  <div v-if="isLoading">Loading...</div>
+
+  <div v-else class="topic-list">
     <div v-for="topic in topics" v-bind:key="topic.id" class="topic">
       {{ topic.title }}
     </div>
@@ -7,14 +9,23 @@
 </template>
 
 <script>
+import topicService from '@/services/TopicService';
+
 export default {
   name: 'topic-list',
   data() {
     return {
-      topics: []
-    }
+      topics: [],
+      isLoading: true
+    };
+  },
+  created() {
+    topicService.getTopics().then(response => {
+      this.topics = response.data;
+      this.isLoading = false;
+    });
   }
-}
+};
 </script>
 
 <style>
