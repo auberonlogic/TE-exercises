@@ -30,6 +30,7 @@ export default {
       isLoading: true
     };
   },
+  // Vue Lifecycle Hook
   created() {
     boardsService.getBoards().then(response => {
       this.boards = response.data;
