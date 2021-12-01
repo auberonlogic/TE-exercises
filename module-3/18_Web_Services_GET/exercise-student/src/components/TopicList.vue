@@ -1,11 +1,11 @@
 <template>
-  <div v-if="isLoading">Loading...</div>
+    <div v-if="isLoading">Loading...</div>
 
-  <div v-else class="topic-list">
-    <div v-for="topic in topics" v-bind:key="topic.id" class="topic">
-      {{ topic.title }}
+    <div v-else class="topic-list">
+      <div v-for="topic in topics" v-bind:key="topic.id" class="topic">
+        {{ topic.title }}
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
