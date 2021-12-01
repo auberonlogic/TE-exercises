@@ -1,17 +1,10 @@
 <template>
-  <div>
-    <div v-for="comment in comments" v-bind:key="comment.id">
-      <h2>{{comment.author}}</h2>
-      <p>{{comment.body}}</p>
-      <h6>{{comment.postedOn}}</h6>
-    </div>
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: "comments-list",
-  props: ['comments']
+  name: "comments-list"
 };
 </script>
 

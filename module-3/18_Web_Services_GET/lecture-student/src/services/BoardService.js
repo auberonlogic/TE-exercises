@@ -12,7 +12,7 @@ const http = axios.create({
 export default {
 
   getBoards() {
-    return http.get('/boards'); // Asynchronous -> returns promise
+    return http.get('/boards');
   },
 
   getCards(boardID) {
