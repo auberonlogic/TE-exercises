@@ -59,17 +59,13 @@ export default {
       });
     },
     saveNewBoard() {
-      boardsService.addBoard(this.newBoard).then(newBoardObject => {
-        const allBoards = this.$store.state.boards;
-        allBoards.push(newBoardObject);
-        this.$store.commit("SET_BOARDS", allBoards);
-      });
+
     },
     randomBackgroundColor() {
       return "#" + this.generateHexCode();
     },
     generateHexCode() {
-      let bg = Math.floor(Math.random()*16777215).toString(16);
+      var bg = Math.floor(Math.random()*16777215).toString(16);
       if (bg.length !== 6) bg = this.generateHexCode();
       return bg;
     }

@@ -49,14 +49,12 @@ export default {
     };
   },
   methods: {
-
-
     retrieveCards() {
       boardsService
         .getCards(this.boardId)
         .then(response => {
           this.title = response.data.title;
-          this.$store.commit("SET_BOARD_CARDS", response.data.cards || []);
+          this.$store.commit("SET_BOARD_CARDS", response.data.cards);
           this.isLoading = false;
         })
         .catch(error => {
@@ -69,9 +67,7 @@ export default {
         });
     },
     deleteBoard() {
-      boardsService.deleteBoard(this.boardId);
-      this.$store.commit("DELETE_BOARD", this.boardId);
-      this.$router.push("/");
+      
     }
   },
   created() {
