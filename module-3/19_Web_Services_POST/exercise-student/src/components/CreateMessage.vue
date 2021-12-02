@@ -32,7 +32,15 @@ export default {
   },
   methods: {
     saveMessage() {
-
+      console.log(this.message.id);
+      console.log(this.message.topicId);
+      console.log(this.message.title);
+      console.log(this.message.messageText);
+      messageService.post(this.message).then(response => {
+        if(response.status === 201) {
+          this.$router.push(`/${this.message.topicId}`);
+        }
+      });
     }
   }
 };
