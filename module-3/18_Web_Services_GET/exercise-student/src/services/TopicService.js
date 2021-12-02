@@ -1,18 +1,22 @@
 import axios from 'axios';
 
 const http = axios.create({
-    baseUrl: "https://te-pgh-api.azurewebsites.net/api",
+    baseURL: "https://te-pgh-api.azurewebsites.net/api",
     headers: {
-        common: {
-            APIKEY: '03017'
-        }
+      common: {
+        APIKEY: '03017'
+      }
     }
-});
+  });
 
-export default {
+  export default {
 
     getTopics() {
-        return http.get('/topics');
+      return http.get('/topics');
+    },
+
+    getSpecificTopic(topicId) {
+      return http.get(`/topics/${topicId}`)
     }
 
 }
