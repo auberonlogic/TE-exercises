@@ -2,7 +2,7 @@
 # specified in the README correctly.
 
 ERRORS=0
-BASE=~/playground
+BASE=~/projects/temp/playground
 
 clear
 echo ""
@@ -22,9 +22,9 @@ do
     PATH_TO_CHECK="${PATHS[$i]}"
 
     if test -f "$BASE$PATH_TO_CHECK" || test -d "$BASE$PATH_TO_CHECK"; then
-        echo "✅ $STEP. ~/playground$PATH_TO_CHECK exists"
+        echo "✅ $STEP. $BASE$PATH_TO_CHECK exists"
     else
-        echo "❗️ $STEP. ~/playground$PATH_TO_CHECK does not exist"
+        echo "❗️ $STEP. $BASE$PATH_TO_CHECK does not exist"
         ERRORS=$((ERRORS+1))
     fi
 done
