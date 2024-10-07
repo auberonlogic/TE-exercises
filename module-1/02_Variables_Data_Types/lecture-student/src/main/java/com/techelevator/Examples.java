@@ -20,15 +20,16 @@ public class Examples {
 		char theFirstLetter = 'a';
 		
 		// use floating point types like double to represent decimal values
-		double averageNumberNumberOfChildren = 2.5;
-		
+		double averageNumberOfChildren = 2.5;
+		float avgNumOfChildren = 2.5F;
+
 		// three different types of assignment statements
 		// 1) assigning a literal
-		x = 2;
+		x = 2; //* 2 -> x
 		// 2) assigning from another variable
-		y = x;
+		y = x; //* 2 -> y
 		// 3) assigning the result of an expression
-		y = x + 3;
+		y = x + 3; //* 2 + 3: 5 -> y
 		
 		// ******************
 		// LITERALS
