@@ -10,7 +10,7 @@ public class Exercises {
 	 sleepIn(false, true) → true
 	 */
 	public boolean sleepIn(boolean weekday, boolean vacation) {
-		return false;
+		return (!weekday || vacation);
 	}
 
 	/*
@@ -22,7 +22,7 @@ public class Exercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		return false;
+		return ((aSmile && bSmile) || (!aSmile && !bSmile));
 	}
 
 	/*
@@ -32,8 +32,9 @@ public class Exercises {
 	 sumDouble(2, 2) → 8
 	 */
 	public int sumDouble(int a, int b) {
-		return 0;
+		return (a != b) ? (a + b) : (2 * (a + b));
 	}
+
 
 	/*
 	 4. Given an int n, return the absolute difference between n and 21, except return double the absolute
@@ -45,7 +46,11 @@ public class Exercises {
 	 diff21(-10) → 31
 	 */
 	public int diff21(int n) {
-		return 0;
+	//	if (n <= 21) {
+	//		return 21 - n;
+	//	}
+	//	return (2 * (n - 21));
+		return (n <= 21) ? (21 - n) : (2 * (n - 21));
 	}
 
 	/*
