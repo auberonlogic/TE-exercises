@@ -529,10 +529,16 @@ public class Exercises {
 	 */
 	public int loneSum(int a, int b, int c) {
 
+		// case 1: all are equal, return 0
 		if (a==b&&b==c) return 0;
+
+		// case 2: two are equal, return the other one. We can have simple checks here because the case 1 condition
+		// 		   ensures all are not equal.
 		else if (a==b) return c;
 		else if (b==c) return a;
 		else if (a==c) return b;
+
+		// case 3: none are the same, return sum of all
 		else return a+b+c;
 	}
 
