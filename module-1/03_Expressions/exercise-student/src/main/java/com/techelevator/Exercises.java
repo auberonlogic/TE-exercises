@@ -62,7 +62,7 @@ public class Exercises {
 	 parrotTrouble(false, 6) → false
 	 */
 	public boolean parrotTrouble(boolean talking, int hour) {
-		return false;
+		return (talking && hour < 7) || (talking && hour > 20);
 	}
 
 	/*
@@ -72,7 +72,7 @@ public class Exercises {
 	 makes10(1, 9) → true
 	 */
 	public boolean makes10(int a, int b) {
-		return false;
+		return (a == 10 || b == 10 || a + b == 10);
 	}
 
 	/*
@@ -83,7 +83,28 @@ public class Exercises {
 	 posNeg(-4, -5, true) → true
 	 */
 	public boolean posNeg(int a, int b, boolean negative) {
-		return false;
+
+		// how to approach this?
+		// can use the exclusive-or to determine if the truth values of a and b are opposite
+		// they're ints though. how to generate truth value.
+
+		//if (!negative) {
+		//	return ((a >= 0 && b < 0) || (a < 0 && b >= 0));
+		//} else {
+		//	return (a < 0 && b < 0);
+		//}
+
+		boolean bothPos = (a >= 0 && b >= 0);
+		boolean bothNeg = (a < 0 && b < 0);
+		if (!negative) {
+			return (!bothPos && !bothNeg);
+		} else {
+			return bothNeg;
+		}
+
+		// that's honestly pretty much the same as the first solution. There's got to be a simpler way to evaluate this.
+
+
 	}
 
 	/*
