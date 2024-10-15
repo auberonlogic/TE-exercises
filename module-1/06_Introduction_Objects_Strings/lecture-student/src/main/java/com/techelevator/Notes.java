@@ -224,6 +224,8 @@ public class Notes {
             System.out.println("they are NOT equal");
         }
 
+        // assigning the value to the object is called instantiation because we are creating a new INSTANCE of the class.
+
     }
 
 }
