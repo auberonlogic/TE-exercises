@@ -59,7 +59,7 @@ public class Lecture {
 			}
 		}
 
-		System.out.println(i);
+		System.out.println();
 
 		// Immutable!
 		obligatory = obligatory.toUpperCase();
