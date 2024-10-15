@@ -215,14 +215,23 @@ public class Notes {
         String slightlyLessGarbage = garbage.trim();
         System.out.println(slightlyLessGarbage);
 
-        String hello1 = "Hello";
-        String hello2 = "Hello";
+        String hello1 = new String("Hello");
+        String hello2 = new String("Hello");
 
         if (hello1 == hello2) {
             System.out.println("they are equal");
         } else {
             System.out.println("they are NOT equal");
         }
+
+
+        String hello3 = kb.nextLine();
+
+        System.out.println(System.identityHashCode(hello1));
+        System.out.println(System.identityHashCode(hello2));
+        System.out.println(System.identityHashCode(hello3));
+
+
 
         // assigning the value to the object is called instantiation because we are creating a new INSTANCE of the class.
 
