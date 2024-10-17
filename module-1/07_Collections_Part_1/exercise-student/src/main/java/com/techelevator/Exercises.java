@@ -177,9 +177,23 @@ public class Exercises {
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
 
+		List<Integer> list9 = new ArrayList<>();
 
+		int longest = 0;
 
-		return null;
+		if (listOne.size() > listTwo.size()) longest = listOne.size();
+		else longest = listTwo.size();
+
+		for (int i = 0; i < longest; i++) {
+			if (i < listOne.size()) {
+				list9.add(listOne.get(i));
+			}
+			if (i < listTwo.size()) {
+				list9.add(listTwo.get(i));
+			}
+		}
+
+		return list9;
 	}
 
 }
