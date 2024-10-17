@@ -349,5 +349,10 @@ public class Notes {
         // HashMaps are most common, because usually when we use a map we don't care about order, and hash maps are more performant.
 
 
+        // when faced with a problem, it is GREAT to know data structures. Ask yourself, is there a data structure that helps me solve this problem?
+
+        // study data structures more deeply
+
+
     }
 }
