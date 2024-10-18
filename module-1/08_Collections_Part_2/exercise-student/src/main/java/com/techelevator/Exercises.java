@@ -1,7 +1,6 @@
 package com.techelevator;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Exercises {
 
@@ -34,7 +33,66 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
-		return null;
+
+		// declare and instantiate map and list
+		Map<String, List<String>> animalGroups = new HashMap<>();
+		List<String> crashAnimals = new ArrayList<>();
+		List<String> towerAnimals = new ArrayList<>();
+		List<String> herdAnimals = new ArrayList<>();
+		List<String> prideAnimals = new ArrayList<>();
+		List<String> murderAnimals = new ArrayList<>();
+		List<String> kitAnimals = new ArrayList<>();
+		List<String> patAnimals = new ArrayList<>();
+		List<String> packAnimals = new ArrayList<>();
+		List<String> floatAnimals = new ArrayList<>();
+
+		// add animals to crash list and add list to map
+		crashAnimals.add("rhino");
+		animalGroups.put("Crash",crashAnimals);
+
+		// add tower
+		towerAnimals.add("giraffe");
+		animalGroups.put("Tower",towerAnimals);
+
+		// add herd
+		herdAnimals.add("elephant");
+		herdAnimals.add("deer");
+		animalGroups.put("Herd",herdAnimals);
+
+		// add pride
+		prideAnimals.add("lion");
+		animalGroups.put("Pride",prideAnimals);
+
+		// add murder
+		murderAnimals.add("crow");
+		animalGroups.put("Murder",murderAnimals);
+
+		// add kit
+		kitAnimals.add("pigeon");
+		animalGroups.put("Kit",kitAnimals);
+
+		// add pat
+		patAnimals.add("flamingo");
+		animalGroups.put("Pat",patAnimals);
+
+		// add pack
+		packAnimals.add("dog");
+		animalGroups.put("Pack",packAnimals);
+
+		// add float
+		floatAnimals.add("crocodile");
+		animalGroups.put("Float",floatAnimals);
+
+		for (String key : animalGroups.keySet()) {
+			if (animalName!=null) animalName = animalName.toLowerCase(Locale.ROOT);
+			if (animalGroups.get(key).contains(animalName)) {
+				return key;
+			}
+		}
+
+
+
+		return "unknown";
 	}
 
 	/*
