@@ -1,7 +1,6 @@
 package com.techelevator;
 
 public class Application {
-
     /**
      * The main entry point in the application
      * @param args
