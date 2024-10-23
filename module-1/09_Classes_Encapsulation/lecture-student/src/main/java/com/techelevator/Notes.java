@@ -124,4 +124,30 @@ class Notes {
 
     }
 
+
+    // there are total 3, maybe 4 fundamental principles of oop.
+    // 1. encapsulation
+    // 2. inheritance
+    // 3. polymorphism
+    // 4? abstraction
+
+
+
+    // ENCAPSULATION
+    // one of the fundamental principles of object oriented programming.
+    // we don't want data from one class spilling into another
+    // neither do we want data in a class to be changed by just anybody
+
+    // encapsulation bundles data together
+    // abstraction is the concept of hiding implementation
+        // hiding doesn't mean secret
+        // it means preventing people from having to care
+        // Scanner class for instance.
+        // we don't need to know or care how Scanner works, so long as we can use it.
+
+    // example of abstraction:
+        // a car
+        // I don't know how a car works per se. I know it has an engine and fuel pump and steering system and brakes, but I don't need to know how any of those components or systems work in order to effectively use them.
+
+
 }
