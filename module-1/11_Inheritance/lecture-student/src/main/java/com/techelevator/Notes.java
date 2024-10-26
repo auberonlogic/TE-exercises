@@ -1,3 +1,5 @@
+package com.techelevator;
+
 public class Notes {
 
     // INHERITANCE
@@ -58,6 +60,21 @@ public class Notes {
         So in the above scenario, person is inheriting from Object.
         When we define inheritance, we need to specify that in the subclass (with the syntax 'extends <superclass> in the class definition)
         But we don't ever need to specify that we inherit from Object. That is a given.
+
+
+        When deciding if something should be an inheritance relationship, ask yourself "is this thing a subset of another thing?"
+        Not every class that is a subset of another thing requires inheritance, but if you use inheritance it should probably satisfy that rule
+
+        the phrase "is a" is important to inheritance.
+        another is "has a" in reference to fields, data members.
+
+        If a Chef "has a" name, we inherit name .
+        If a Chef "is a" person, we inherit Person.
+
+
+        Inheritance allows us to get rid of deduplication and write simpler code
+            - without inheritance, if we wanted to slightly different classes to do many of the same things, we would need to write the logic to do those things in both classes. If we ever needed to change the logic, we would need to change it in multiple places.
+            - if we wanted to create just one class to avoid duplication, we would have to write gnarly if else logic to handle different paths of logic which we can handle with overrides via inheritance.
 
 
 
