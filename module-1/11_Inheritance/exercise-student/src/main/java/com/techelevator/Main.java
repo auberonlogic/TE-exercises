@@ -1,5 +1,8 @@
 package com.techelevator;
 
+import com.techelevator.challenge.CheckingAccount;
+
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
@@ -11,20 +14,19 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         CheckingAccount checking = new CheckingAccount("", "");
-
-        int balance = 0;
+        BigDecimal balance = BigDecimal.valueOf(0);
 
         while (true) {
             System.out.println();
             System.out.print("Enter starting balance: ");
-            balance = scan.nextInt();
-//            checking.setBalance(balance);
+            balance = BigDecimal.valueOf(scan.nextInt());
+            checking.setBalance(balance);
 
             System.out.println("Current balance: " + checking.getBalance());
 
             System.out.println();
             System.out.print("Enter amount to withdraw: ");
-            int withdraw = scan.nextInt();
+            BigDecimal withdraw = BigDecimal.valueOf(scan.nextInt());
 
             System.out.println("New balance: " + checking.withdraw(withdraw));
         }
