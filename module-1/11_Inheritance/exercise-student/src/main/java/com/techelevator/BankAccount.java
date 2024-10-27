@@ -18,6 +18,16 @@ public class BankAccount {
         this.balance = balance;
     }
 
+    // method overloading... methods must be different in some way
+    // different return type...
+    // different parameters...
+    // different order of same parameters...
+    public BankAccount(int balance, String accountHolderName, String accountNumber) {
+        this.balance = balance;
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+    }
+
     public String getAccountHolderName(){
         return accountHolderName;
     }
