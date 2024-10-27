@@ -82,5 +82,38 @@ public class Notes {
 
      */
 
+    /*
+        ACCESS MODIFIERS
+            - public
+                - most accessible. anyone, anywhere can access.
+            - private
+                - least accessible. only the class in which the member is declared can access.
+
+            protected and default scope to packages. can you see these data members from different packages?
+            - protected
+                - can you see it from other packages?
+            - default (no access modifier explicitly specified in the code)
+                - can you see it from subclasses?
+
+
+
+            Access Modifier scope chart:
+
+            Modifier    Class    Package    Subclass    World
+            public      Y        Y          Y           Y
+            protected   Y        Y          Y           N
+            default     Y        Y          N           N
+            private     Y        N          N           N
+
+            within a given class C, C can see every member regardless of access modifier
+            with a given package P, classes in P can see members with access modifiers public, protected, and default
+            subclasses can see what is in their superclasses, even if they are in different packages, if the members have protected access.
+
+
+
+
+
+
+     */
 
 }

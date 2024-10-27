@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Person {
 
     // protected allows you to access
-    private String firstName;
+    String firstName;
     private String lastName;
     private int age;
 
